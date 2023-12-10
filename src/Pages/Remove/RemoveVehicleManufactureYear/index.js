@@ -1,0 +1,2 @@
+import RemoveVehicleManufactureYear from "./RemoveVehicleManufactureYear";
+export default RemoveVehicleManufactureYear;

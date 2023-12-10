@@ -1,0 +1,2 @@
+import RemoveVehicleDrivetrainType from "./RemoveVehicleDrivetrainType";
+export default RemoveVehicleDrivetrainType

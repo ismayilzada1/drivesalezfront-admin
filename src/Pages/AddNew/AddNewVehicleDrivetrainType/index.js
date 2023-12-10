@@ -1,0 +1,2 @@
+import AddNewVehicleDrivetrainType from "./AddNewVehicleDrivetrainType";
+export default AddNewVehicleDrivetrainType
