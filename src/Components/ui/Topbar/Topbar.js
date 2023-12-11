@@ -1,4 +1,5 @@
 import "./Topbar.css";
+import Breadcrumb from "./Breadcrumb";
 
 const Topbar = () => {
     return (
@@ -13,15 +14,16 @@ const Topbar = () => {
                             </a>
                         </div>
                     </div>
-                    <div className="navbar-breadcrumb">
-                        <h5 className="mb-0">Account Setting</h5>
-                        <nav aria-label="breadcrumb">
-                            <ul className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li className="breadcrumb-item active" aria-current="page">Account Setting</li>
-                            </ul>
-                        </nav>
-                    </div>
+                    {/*<div className="navbar-breadcrumb">*/}
+                    {/*    <h5 className="mb-0">Account Setting</h5>*/}
+                    {/*    <nav aria-label="breadcrumb">*/}
+                    {/*        <ul className="breadcrumb">*/}
+                    {/*            <li className="breadcrumb-item"><a href="index.html">Home</a></li>*/}
+                    {/*            <li className="breadcrumb-item active" aria-current="page">Account Setting</li>*/}
+                    {/*        </ul>*/}
+                    {/*    </nav>*/}
+                    {/*</div>*/}
+                    <Breadcrumb />
                     <nav className="navbar navbar-expand-lg navbar-light p-0">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i className="ri-menu-3-line"></i>

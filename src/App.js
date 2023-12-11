@@ -35,6 +35,21 @@ import RemoveVehicleDrivetrainType from "./Pages/Remove/RemoveVehicleDrivetrainT
 import RemoveVehicleManufactureYear from "./Pages/Remove/RemoveVehicleManufactureYear";
 import RemoveVehicleGearboxType from "./Pages/Remove/RemoveVehicleGearboxType";
 import RemoveVehicleMarketVersion from "./Pages/Remove/RemoveVehicleMarketVersion";
+import UpdateVehicleMake from "./Pages/Update/UpdateVehicleMake";
+import UpdateVehicleModel from "./Pages/Update/UpdateVehicleModel";
+import UpdateVehicleBodyType from "./Pages/Update/UpdateVehicleBodyType";
+import UpdateCity from "./Pages/Update/UpdateCity";
+import UpdateCountry from "./Pages/Update/UpdateCountry";
+import UpdateCurrency from "./Pages/Update/UpdateCurrency";
+import UpdateSubscription from "./Pages/Update/UpdateSubscription";
+import UpdateVehicleColor from "./Pages/Update/UpdateVehicleColor";
+import UpdateVehicleCondition from "./Pages/Update/UpdateVehicleCondition";
+import UpdateVehicleOption from "./Pages/Update/UpdateVehicleOption";
+import UpdateVehicleDrivetrainType from "./Pages/Update/UpdateVehicleDrivetrainType";
+import UpdateVehicleFuelType from "./Pages/Update/UpdateVehicleFuelType";
+import UpdateVehicleGearboxType from "./Pages/Update/UpdateVehicleGearboxType";
+import UpdateVehicleManufactureYear from "./Pages/Update/UpdateVehicleManufactureYear";
+import UpdateVehicleMarketVersion from "./Pages/Update/UpdateVehicleMarketVersion";
 
 function App() {
 
@@ -86,6 +101,23 @@ function App() {
                   <Route path='/remove-vehicle-gearbox-type' element={<RemoveVehicleGearboxType />} />
                   <Route path='/remove-vehicle-manufacture-year' element={<RemoveVehicleManufactureYear />} />
                   <Route path='/remove-vehicle-market-version' element={<RemoveVehicleMarketVersion />} />
+
+
+                  <Route path='/update-vehicle-make' element={<UpdateVehicleMake />} />
+                  <Route path='/update-vehicle-model' element={<UpdateVehicleModel />} />
+                  <Route path='/update-vehicle-bodytype' element={<UpdateVehicleBodyType />} />
+                  <Route path='/update-city' element={<UpdateCity />} />
+                  <Route path='/update-country' element={<UpdateCountry />} />
+                  <Route path='/update-currency' element={<UpdateCurrency />} />
+                  <Route path='/update-subscription' element={<UpdateSubscription />} />
+                  <Route path='/update-vehicle-color' element={<UpdateVehicleColor />} />
+                  <Route path='/update-vehicle-condition' element={<UpdateVehicleCondition />} />
+                  <Route path='/update-vehicle-option' element={<UpdateVehicleOption />} />
+                  <Route path='/update-vehicle-drivetrain-type' element={<UpdateVehicleDrivetrainType />} />
+                  <Route path='/update-vehicle-fuel-type' element={<UpdateVehicleFuelType />} />
+                  <Route path='/update-vehicle-gearbox-type' element={<UpdateVehicleGearboxType />} />
+                  <Route path='/update-vehicle-manufacture-year' element={<UpdateVehicleManufactureYear />} />
+                  <Route path='/update-vehicle-market-version' element={<UpdateVehicleMarketVersion />} />
 
 
               </Routes>

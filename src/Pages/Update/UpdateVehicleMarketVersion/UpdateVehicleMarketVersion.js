@@ -1,12 +1,12 @@
 import React from "react";
-import "./RemoveVehicleOption.css";
+import "./UpdateVehicleMarketVersion.css";
 
-const RemoveVehicleOption = () => {
+const UpdateVehicleMarketVersion = () => {
     return (
         <>
             <div className={'wrapper'}>
                 <div id="content-page" className="content-page">
-                    <h1>REMOVE VEHICLE Option PAGE</h1>
+                    <h1>UPDATE NEW VEHICLE MARKET VERSION PAGE</h1>
                 </div>
             </div>
         </>
@@ -14,4 +14,4 @@ const RemoveVehicleOption = () => {
 };
 
 
-export default RemoveVehicleOption;
+export default UpdateVehicleMarketVersion;
