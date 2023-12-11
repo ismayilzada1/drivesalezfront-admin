@@ -4,9 +4,10 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import persistReducer from "redux-persist/es/persistReducer";
 import authReducer from "./Auth/AuthSlice";
+import adminReducer from "./Admin/AdminSlice"
 
 const reducers=combineReducers(
-    {auth:authReducer}
+    {auth:authReducer,admin:adminReducer}
 );
 
 const config={
