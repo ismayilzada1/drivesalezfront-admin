@@ -247,6 +247,7 @@ export default class AdminService {
     }
 
     async AddNewVehicleModel(data) {
+        console.log (data);
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-model`, {
                 method: 'POST',
@@ -350,6 +351,126 @@ export default class AdminService {
     async RemoveBrand(data) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/delete-make/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveModel(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-model/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveColor(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-color/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveOption(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-option/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveMarketVersion(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-market-version/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveFuelType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-fuel/${data}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -493,6 +614,107 @@ export default class AdminService {
         }
     }
 
+    async UpdateModel(data) {
+        console.log (data);
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-model/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.modelName)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateColor(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-color/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.color)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateOption(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-option/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.option)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateMarketVersion(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-market-version/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.marketVersion)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async UpdateGearboxType(data) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-gearbox/${data.id}`, {
@@ -518,6 +740,33 @@ export default class AdminService {
         }
     }
 
+    async UpdateFuelType(data) {
+        console.log (data.id);
+        console.log (data.fuelType);
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-fuel/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.fuelType)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async UpdateDrivetrainType(data) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-drivetrain/${data.id}`, {
@@ -525,7 +774,7 @@ export default class AdminService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.bodyType)
+                body:JSON.stringify(data.drivetrainType)
             });
 
             if (response.ok) {

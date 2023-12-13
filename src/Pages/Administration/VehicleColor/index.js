@@ -1,2 +1,2 @@
-import VehicleBodyType from "./VehicleBodyType";
-export default VehicleBodyType;
+import VehicleColor from "./VehicleColor";
+export default VehicleColor;

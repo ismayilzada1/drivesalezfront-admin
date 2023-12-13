@@ -46,6 +46,11 @@ import VehicleMake from "./Pages/Administration/VehicleMake";
 import VehicleBodyType from "./Pages/Administration/VehicleBodyType";
 import VehicleDrivetrainType from "./Pages/Administration/VehicleDrivetrainType";
 import VehicleGearboxType from "./Pages/Administration/VehicleGearboxType";
+import VehicleFuelType from "./Pages/Administration/VehicleFuelType";
+import VehicleMarketVersion from "./Pages/Administration/VehicleMarketVersion";
+import VehicleOption from "./Pages/Administration/VehicleOption";
+import VehicleColor from "./Pages/Administration/VehicleColor";
+import VehicleModel from "./Pages/Administration/VehicleModel";
 
 function App() {
 
@@ -67,17 +72,17 @@ function App() {
                   <Route path='/dashboard' element={<Home/>}/>
 
                   <Route path='/admin-vehicle-make' element={<VehicleMake/>}/>
-                  <Route path='/add-vehicle-model' element={<AddNewVehicleModel/>}/>
+                  <Route path='/admin-vehicle-model' element={<VehicleModel/>}/>
                   <Route path='/admin-vehicle-bodytype' element={<VehicleBodyType/>}/>
                   <Route path='/add-city' element={<AddNewCity/>}/>
                   <Route path='/add-country' element={<AddNewCountry/>}/>
-                  <Route path='/add-vehicle-color' element={<AddNewVehicleColor/>}/>
+                  <Route path='/admin-vehicle-color' element={<VehicleColor/>}/>
                   <Route path='/add-vehicle-condition' element={<AddNewVehicleCondition/>}/>
-                  <Route path='/add-vehicle-option' element={<AddNewVehicleOption/>}/>
+                  <Route path='/admin-vehicle-option' element={<VehicleOption/>}/>
                   <Route path='/admin-vehicle-drivetrain-type' element={<VehicleDrivetrainType/>}/>
-                  <Route path='/add-vehicle-fuel-type' element={<AddNewVehicleFuelType/>}/>
+                  <Route path='/admin-vehicle-fuel-type' element={<VehicleFuelType/>}/>
                   <Route path='/admin-vehicle-gearbox-type' element={<VehicleGearboxType/>}/>
-                  <Route path='/add-vehicle-market-version' element={<AddNewVehicleMarketVersion/>}/>
+                  <Route path='/admin-vehicle-market-version' element={<VehicleMarketVersion/>}/>
 
                   <Route path='/remove-vehicle-make' element={<RemoveVehicleMake />} />
                   <Route path='/remove-vehicle-model' element={<RemoveVehicleModel />} />

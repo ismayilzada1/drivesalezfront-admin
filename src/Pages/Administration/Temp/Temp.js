@@ -154,7 +154,7 @@ const Temp = () => {
 
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Current Brand Name</label>
-                                    <input value={selectedRow.makeName} disabled={true} type="text"
+                                    <input value={selectedRow.marketVersion} disabled={true} type="text"
                                            className="form-control mb-0" id="exampleInputEmail1"/>
                                 </div>
 
@@ -211,7 +211,7 @@ const Temp = () => {
                             </div>
                             <div className="modal-body">
                                 <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove
-                                    "<b>{selectedRow.makeName}</b>" brand</p>
+                                    "<b>{selectedRow.marketVersion}</b>" brand</p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove

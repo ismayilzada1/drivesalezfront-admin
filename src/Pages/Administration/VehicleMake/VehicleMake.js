@@ -224,7 +224,7 @@ const VehicleMake = () => {
                             </div>
                             <div className="modal-body">
                                 <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove
-                                    "<b>{selectedRow.makeName}</b>" brand</p>
+                                    "<b>{selectedRow.marketVersion}</b>" brand</p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove

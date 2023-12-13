@@ -17,6 +17,9 @@ export default class CommonDataService {
     async getAllCarMakes() {
         return await this.getResource(`/Details/get-all-makes`);
     }
+    async getAllCarModelsByMake(id) {
+        return await this.getResource(`/Details/get-all-models-by-make?id=${id}`);
+    }
 
     async getAllCarModels() {
         return this.getResource(`/Details/get-all-models`);

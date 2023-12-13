@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import commonDataService from "../../../Api-services/CommonDataService";
-import {AddNewColor, RemoveColor, UpdateColor} from "../../../Store/Admin/AdminActions";
+import {AddNewMarketVersion, RemoveMarketVersion, UpdateMarketVersion} from "../../../Store/Admin/AdminActions";
 import Loading from "../../../Components/ui/Loading";
 
-const VehicleColor = () => {
-    const [newColor, setNewColor] = useState ('');
+const VehicleMarketVersion = () => {
+    const [newMarketVersion, setNewMarketVersion] = useState ('');
 
 
     const dispatch = useDispatch ();
@@ -13,12 +13,12 @@ const VehicleColor = () => {
     const {loading, error} = useSelector ((state) => state.admin);
 
     const [listTable, setListTable] = useState ([]);
-    const [selectedRow, setSelectedRow] = useState ({id: null, color: null});
+    const [selectedRow, setSelectedRow] = useState ({id: null, marketVersion: null});
 
     useEffect (() => {
         const fetchData = async () => {
             try {
-                const data = await CommonDataService.getAllCarColors();
+                const data = await CommonDataService.getAllCarMarketVersions();
                 setListTable (data);
             } catch (error) {
                 console.error ("Error fetching data:", error);
@@ -28,13 +28,13 @@ const VehicleColor = () => {
     }, []);
 
     const handleRowClick = (item) => {
-        setSelectedRow ({id: item.id, color: item.color});
+        setSelectedRow ({id: item.id, marketVersion: item.marketVersion});
     };
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveColor(selectedRow.id)).then (() => {
-                const data = CommonDataService.getAllCarColors().then (
+            dispatch (RemoveMarketVersion (selectedRow.id)).then (() => {
+                const data = CommonDataService.getAllCarMarketVersions().then (
                     (response) => {
                         setListTable (response);
                     }
@@ -43,11 +43,11 @@ const VehicleColor = () => {
         }
     };
     const handleAddItem = () => {
-        console.log (newColor);
-        if(newColor) {
-            dispatch(AddNewColor(newColor)).then (() => {
-                setNewColor('');
-                const data = CommonDataService.getAllCarColors().then((response)=>{
+        console.log (newMarketVersion);
+        if(newMarketVersion) {
+            dispatch(AddNewMarketVersion(newMarketVersion)).then (() => {
+                setNewMarketVersion('');
+                const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);
                 });
             });
@@ -55,14 +55,14 @@ const VehicleColor = () => {
     };
 
     const handleUpdateItem = () => {
-        if(selectedRow.id && newColor) {
+        if(selectedRow.id && newMarketVersion) {
             const requestBody={
                 id:selectedRow.id,
-                color:newColor
+                marketVersion:newMarketVersion
             }
-            dispatch(UpdateColor(requestBody)).then (() => {
-                setNewColor('');
-                const data = CommonDataService.getAllCarColors().then((response)=>{
+            dispatch(UpdateMarketVersion(requestBody)).then (() => {
+                setNewMarketVersion('');
+                const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);
                 });
             });
@@ -98,7 +98,7 @@ const VehicleColor = () => {
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Color</th>
+                            <th scope="col">Market Version</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -109,7 +109,7 @@ const VehicleColor = () => {
                                 className={selectedRow.id === item.id ? "selected my-table" : "my-table"}
                             >
                                 <th scope="row">{item.id}</th>
-                                <td>{item.color}</td>
+                                <td>{item.marketVersion}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -156,7 +156,7 @@ const VehicleColor = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Change Vehicle Color</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Change Market Version</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -164,16 +164,16 @@ const VehicleColor = () => {
                             <div className="modal-body">
 
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Current Vehicle Color</label>
-                                    <input value={selectedRow.color} disabled={true} type="text"
+                                    <label htmlFor="exampleInputEmail1">Current Market Version</label>
+                                    <input value={selectedRow.marketVersion} disabled={true} type="text"
                                            className="form-control mb-0" id="exampleInputEmail1"/>
                                 </div>
 
                                 <div className="form-group m-0">
-                                    <label htmlFor="exampleInputEmail1">New Vehicle Color</label>
-                                    <input value={newColor} onChange={(e) => setNewColor (e.target.value)}
+                                    <label htmlFor="exampleInputEmail1">New Market Version</label>
+                                    <input value={newMarketVersion} onChange={(e) => setNewMarketVersion (e.target.value)}
                                            type="text" className="form-control mb-0" id="exampleInputEmail1"
-                                           placeholder="Enter vehicle color"/>
+                                           placeholder="Enter market version"/>
                                 </div>
 
                             </div>
@@ -189,7 +189,7 @@ const VehicleColor = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Add Vehicle Color</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Add Market Version</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -197,10 +197,10 @@ const VehicleColor = () => {
                             <div className="modal-body">
 
                                 <div className="form-group m-0">
-                                    <label htmlFor="exampleInputEmail1">New Vehicle Color</label>
-                                    <input value={newColor} onChange={(e) => setNewColor(e.target.value)}
+                                    <label htmlFor="exampleInputEmail1">New Market Version</label>
+                                    <input value={newMarketVersion} onChange={(e) => setNewMarketVersion(e.target.value)}
                                            type="text" className="form-control mb-0" id="exampleInputEmail1"
-                                           placeholder="Enter vehicle color"/>
+                                           placeholder="Enter market version"/>
                                 </div>
 
                             </div>
@@ -216,14 +216,14 @@ const VehicleColor = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Remove Vehicle Color</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Remove Market Version</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
                                 <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove
-                                    "<b>{selectedRow.color}</b>"  Color</p>
+                                    "<b>{selectedRow.marketVersion}</b>" Market Version</p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove
@@ -238,4 +238,4 @@ const VehicleColor = () => {
     );
 };
 
-export default VehicleColor;
+export default VehicleMarketVersion;
