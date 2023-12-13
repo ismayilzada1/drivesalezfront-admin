@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./Home.css";
 import {useSelector } from 'react-redux';
 import {useNavigate} from "react-router-dom";
@@ -7,17 +7,22 @@ const Home = () => {
 
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const navigate=useNavigate();
+    const admin = useSelector((state) => state.auth.admin);
 
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/sign-in');
+        }
+    }, [isLoggedIn, navigate]);
 
-    // useEffect(() => {
-    //     if (!isLoggedIn) {
-    //         navigate('/');
-    //     }
-    // }, [isLoggedIn, navigate]);
-    //
-    // if (!isLoggedIn) {
-    //     return null;
-    // }
+    useEffect(()=>{
+        console.log (admin);
+    },[]);
+
+    if (!isLoggedIn) {
+        return null;
+    }
+
 
 
     return (

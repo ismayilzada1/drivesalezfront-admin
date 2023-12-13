@@ -129,7 +129,6 @@ const VehicleModel = () => {
 
 
                     <div className='d-flex flex-row  justify-content-start align-items-start'>
-
                         <table className="table table-dark mr-3">
                             <thead>
                             <tr>
@@ -173,7 +172,6 @@ const VehicleModel = () => {
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
 

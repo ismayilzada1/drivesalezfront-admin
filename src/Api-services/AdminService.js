@@ -566,12 +566,12 @@ export default class AdminService {
 
     async UpdateBodyType(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-body/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-body`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.bodyType)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -591,12 +591,12 @@ export default class AdminService {
 
     async UpdateBrand(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-make/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-make`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.makeName)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -615,14 +615,13 @@ export default class AdminService {
     }
 
     async UpdateModel(data) {
-        console.log (data);
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-model/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-model`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.modelName)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -642,12 +641,12 @@ export default class AdminService {
 
     async UpdateColor(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-color/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-color`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.color)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -667,12 +666,12 @@ export default class AdminService {
 
     async UpdateOption(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-option/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-option`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.option)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -692,12 +691,12 @@ export default class AdminService {
 
     async UpdateMarketVersion(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-market-version/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-market-version`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.marketVersion)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -717,12 +716,12 @@ export default class AdminService {
 
     async UpdateGearboxType(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-gearbox/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-gearbox`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.gearboxType)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -741,15 +740,13 @@ export default class AdminService {
     }
 
     async UpdateFuelType(data) {
-        console.log (data.id);
-        console.log (data.fuelType);
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-fuel/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-fuel`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.fuelType)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {
@@ -769,12 +766,12 @@ export default class AdminService {
 
     async UpdateDrivetrainType(data) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-drivetrain/${data.id}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-drivetrain`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(data.drivetrainType)
+                body:JSON.stringify(data)
             });
 
             if (response.ok) {

@@ -1,7 +1,18 @@
 import "./Topbar.css";
 import Breadcrumb from "./Breadcrumb";
+import {useDispatch, useSelector} from "react-redux";
+import {logoutAdmin} from "../../../Store/Auth/AuthActions";
 
 const Topbar = () => {
+
+    const admin = useSelector((state) => state.auth.admin);
+    const dispatch = useDispatch ();
+
+    const handleLogout = async() => {
+        if(admin){await dispatch(logoutAdmin(admin.token))}
+    };
+
+
     return (
         <>
             <div className="iq-top-navbar">
@@ -178,8 +189,7 @@ const Topbar = () => {
                                     <div className="iq-card shadow-none m-0">
                                         <div className="iq-card-body p-0 ">
                                             <div className="bg-primary p-3">
-                                                <h5 className="mb-0 text-white line-height">Hello Nik jone</h5>
-                                                <span className="text-white font-size-12">Available</span>
+                                                <h5 className="mb-0 text-white line-height">Hello {admin.email} </h5>
                                             </div>
                                             <a href="profile.html" className="iq-sub-card iq-bg-primary-hover">
                                                 <div className="media align-items-center">
@@ -226,7 +236,7 @@ const Topbar = () => {
                                                 </div>
                                             </a>
                                             <div className="d-inline-block w-100 text-center p-3">
-                                                <a className="iq-bg-danger iq-sign-btn" href="sign-in.html" role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
+                                                <a className="iq-bg-danger iq-sign-btn" href="sign-in.html" onClick={handleLogout} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
                                             </div>
                                         </div>
                                     </div>
