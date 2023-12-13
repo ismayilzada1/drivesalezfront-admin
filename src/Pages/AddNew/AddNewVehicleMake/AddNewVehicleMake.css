@@ -1,0 +1,8 @@
+.selected {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.my-table{
+    cursor: pointer;
+}

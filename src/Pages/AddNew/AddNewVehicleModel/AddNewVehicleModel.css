@@ -1,0 +1,5 @@
+.table-container {
+    max-height: 440px !important;
+    overflow-x: auto;
+    min-width: 50%;
+}

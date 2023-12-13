@@ -97,7 +97,6 @@ const AddNewVehicleOption = () => {
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </>
     );

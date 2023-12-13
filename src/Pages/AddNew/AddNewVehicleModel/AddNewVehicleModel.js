@@ -99,6 +99,7 @@ const AddNewVehicleModel = () => {
 
                     <div className='d-flex flex-row  justify-content-start align-items-start'>
 
+
                     <table className="table table-dark table-hover mr-3">
                         <thead>
                         <tr>
@@ -120,7 +121,7 @@ const AddNewVehicleModel = () => {
                         </tbody>
                     </table>
 
-
+                    <div className="table-container">
                     <table className="table table-dark">
                         <thead>
                         <tr>
@@ -140,6 +141,7 @@ const AddNewVehicleModel = () => {
                         ))}
                         </tbody>
                     </table>
+                    </div>
 
                     </div>
                 </div>

@@ -1,3 +1,5 @@
+import {json} from "react-router-dom";
+
 export default class AdminService {
     constructor() {
         this.baseUrl = 'https://localhost:7261/api';
@@ -269,5 +271,276 @@ export default class AdminService {
         }
     }
 
+    async AddNewVehicleManufactureYear(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/add-new-year`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify (data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async AddNewCountry(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/add-new-country`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify (data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
+    async AddNewCity(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/add-new-city`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify (data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveBrand(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-make/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveBodyType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-body/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveGearboxType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-gearbox/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveDrivetrainType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-drivetrain/${data}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateBodyType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-body/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.bodyType)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateBrand(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-make/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.makeName)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateGearboxType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-gearbox/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.gearboxType)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateDrivetrainType(data) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-drivetrain/${data.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data.bodyType)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
 
 }

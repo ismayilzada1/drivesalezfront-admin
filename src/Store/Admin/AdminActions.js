@@ -1,7 +1,7 @@
 import {
     addNewStart,
     addNewSuccess,
-    addNewFail
+    addNewFail, updateStart, updateSuccess, updateFail, removeStart, removeSuccess, removeFail
 } from './AdminSlice';
 
 
@@ -179,3 +179,193 @@ export const AddVehicleModel = (data) => async (dispatch) => {
     }
 };
 
+
+export const AddVehicleManufactureYear = (data) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.AddNewVehicleManufactureYear(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Market Version");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+
+export const AddCountry = (data) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.AddNewCountry(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Market Version");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+export const AddCity = (data) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.AddNewCity(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Market Version");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+export const RemoveBrand = (data) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.RemoveBrand(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+export const RemoveBodyType = (data) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.RemoveBodyType(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+export const RemoveGearboxType = (data) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.RemoveGearboxType(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+export const UpdateBodyType = (data) => async (dispatch) => {
+    dispatch(updateStart());
+    try {
+        const response = await AdminService.UpdateBodyType(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW BodY Type");
+            dispatch(updateSuccess(response.data));
+            return response;
+        } else {
+            dispatch(updateFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(updateFail('An error occurred while processing your request'));
+    }
+};
+
+export const UpdateGearboxType = (data) => async (dispatch) => {
+    dispatch(updateStart());
+    try {
+        const response = await AdminService.UpdateGearboxType(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW BodY Type");
+            dispatch(updateSuccess(response.data));
+            return response;
+        } else {
+            dispatch(updateFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(updateFail('An error occurred while processing your request'));
+    }
+};
+
+
+export const UpdateBrand = (data) => async (dispatch) => {
+    dispatch(updateStart());
+    try {
+        const response = await AdminService.UpdateBrand(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW BodY Type");
+            dispatch(updateSuccess(response.data));
+            return response;
+        } else {
+            dispatch(updateFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(updateFail('An error occurred while processing your request'));
+    }
+};
+
+
+export const UpdateDrivetrainType = (data) => async (dispatch) => {
+    dispatch(updateStart());
+    try {
+        const response = await AdminService.UpdateDrivetrainType(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW BodY Type");
+            dispatch(updateSuccess(response.data));
+            return response;
+        } else {
+            dispatch(updateFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(updateFail('An error occurred while processing your request'));
+    }
+};
+
+export const RemoveDrivetrainType = (data) => async (dispatch) => {
+    dispatch(removeStart());
+    try {
+        const response = await AdminService.RemoveDrivetrainType(data);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(removeSuccess(response.data));
+            return response;
+        } else {
+            dispatch(removeFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(removeFail('An error occurred while processing your request'));
+    }
+};
