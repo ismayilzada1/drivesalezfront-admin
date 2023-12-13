@@ -1,2 +1,0 @@
-import UpdateVehicleDrivetrainType from "./UpdateVehicleDrivetrainType";
-export default UpdateVehicleDrivetrainType

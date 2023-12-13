@@ -51,6 +51,7 @@ import VehicleMarketVersion from "./Pages/Administration/VehicleMarketVersion";
 import VehicleOption from "./Pages/Administration/VehicleOption";
 import VehicleColor from "./Pages/Administration/VehicleColor";
 import VehicleModel from "./Pages/Administration/VehicleModel";
+import Moderator from "./Pages/Administration/Moderator";
 
 function App() {
 
@@ -70,6 +71,7 @@ function App() {
               <Routes>
                   <Route path="/sign-in" element={<SignIn />} />
                   <Route path='/dashboard' element={<Home/>}/>
+                  <Route path="/" element={<Home />} />
 
                   <Route path='/admin-vehicle-make' element={<VehicleMake/>}/>
                   <Route path='/admin-vehicle-model' element={<VehicleModel/>}/>
@@ -83,6 +85,7 @@ function App() {
                   <Route path='/admin-vehicle-fuel-type' element={<VehicleFuelType/>}/>
                   <Route path='/admin-vehicle-gearbox-type' element={<VehicleGearboxType/>}/>
                   <Route path='/admin-vehicle-market-version' element={<VehicleMarketVersion/>}/>
+                  <Route path='/admin-moderator' element={<Moderator/>}/>
 
                   <Route path='/remove-vehicle-make' element={<RemoveVehicleMake />} />
                   <Route path='/remove-vehicle-model' element={<RemoveVehicleModel />} />

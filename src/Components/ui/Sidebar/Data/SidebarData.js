@@ -11,6 +11,7 @@ const sidebarData = [
         icon: 'ri-admin-line',
         startsWith: '/admin',
         submenu: [
+            {title: 'Moderator', path: '/admin-moderator'},
             {title: 'Vehicle Make', path: '/admin-vehicle-make'},
             {title: 'Vehicle Model', path: '/admin-vehicle-model'},
             {title: 'Vehicle Body Type', path: '/admin-vehicle-bodytype'},
