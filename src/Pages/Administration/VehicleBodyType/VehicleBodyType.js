@@ -13,6 +13,8 @@ const VehicleBodyType = () => {
     const CommonDataService = new commonDataService();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, bodyType: null});
 
@@ -34,7 +36,7 @@ const VehicleBodyType = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveBodyType (selectedRow.id)).then (() => {
+            dispatch (RemoveBodyType (selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarBodyTypes ().then (
                     (response) => {
                         setListTable (response);
@@ -46,7 +48,7 @@ const VehicleBodyType = () => {
 
     const handleAddItem = () => {
         if(newBodyType) {
-            dispatch(AddNewBodyType(newBodyType)).then (() => {
+            dispatch(AddNewBodyType(newBodyType,admin.token)).then (() => {
                 setNewBodyType('');
                 const data = CommonDataService.getAllCarBodyTypes().then((response)=>{
                     setListTable(response);
@@ -58,11 +60,12 @@ const VehicleBodyType = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newBodyType) {
             const requestBody={
-                id:selectedRow.id,
-                bodyType:newBodyType
+                "bodyTypeId": selectedRow.id,
+                "newBodyType": newBodyType
             }
-            dispatch(UpdateBodyType(requestBody)).then (() => {
+            dispatch(UpdateBodyType(requestBody,admin.token)).then (() => {
                 setNewBodyType('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarBodyTypes().then((response)=>{
                     setListTable(response);
                 });

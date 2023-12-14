@@ -19,12 +19,13 @@ export default class AdminService {
     }
 
 
-    async AddNewColor(data) {
+    async AddNewColor(data,token) {
         try {
             const response = await fetch(`${this.baseUrl}/Admin/add-new-color`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify(data),
             });
@@ -44,12 +45,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewBrand(data) {
+    async AddNewBrand(data,token) {
         try {
             const response = await fetch(`${this.baseUrl}/Admin/add-new-make`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify(data),
             });
@@ -70,12 +72,13 @@ export default class AdminService {
     }
 
 
-    async AddNewBodyType(data) {
+    async AddNewBodyType(data,token) {
         try {
             const response = await fetch(`${this.baseUrl}/Admin/add-new-body`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify(data),
             });
@@ -95,12 +98,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewFuelType(data) {
+    async AddNewFuelType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-fuel`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -120,12 +124,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewDrivetrainType(data) {
+    async AddNewDrivetrainType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-drivetrain`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -145,12 +150,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewGearboxType(data) {
+    async AddNewGearboxType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-gearbox`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -171,12 +177,13 @@ export default class AdminService {
     }
 
 
-    async AddNewMarketVersion(data) {
+    async AddNewMarketVersion(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-market-version`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -196,12 +203,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewVehicleOption(data) {
+    async AddNewVehicleOption(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-option`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -221,12 +229,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewVehicleCondition(data) {
+    async AddNewVehicleCondition(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-condition`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -246,13 +255,14 @@ export default class AdminService {
         }
     }
 
-    async AddNewVehicleModel(data) {
+    async AddNewVehicleModel(data,token) {
         console.log (data);
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-model`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -272,12 +282,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewVehicleManufactureYear(data) {
+    async AddNewVehicleManufactureYear(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-year`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -297,12 +308,13 @@ export default class AdminService {
         }
     }
 
-    async AddNewCountry(data) {
+    async AddNewCountry(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-country`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -323,12 +335,13 @@ export default class AdminService {
     }
 
 
-    async AddNewCity(data) {
+    async AddNewCity(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/add-new-city`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body: JSON.stringify (data),
             });
@@ -348,13 +361,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveBrand(data) {
+    async RemoveBrand(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-make/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-make`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -372,13 +387,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveModel(data) {
+    async RemoveModel(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-model/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-model`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -396,13 +413,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveColor(data) {
+    async RemoveColor(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-color/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-color`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -420,13 +439,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveOption(data) {
+    async RemoveCountry(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-option/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-country`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -444,13 +465,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveMarketVersion(data) {
+    async RemoveVehicleCondition(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-market-version/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-condition`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -468,13 +491,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveFuelType(data) {
+    async RemoveOption(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-fuel/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-option`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -492,13 +517,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveBodyType(data) {
+    async RemoveMarketVersion(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-body/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-market-version`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -516,13 +543,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveGearboxType(data) {
+    async RemoveFuelType(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-gearbox/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-fuel`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -540,13 +569,15 @@ export default class AdminService {
         }
     }
 
-    async RemoveDrivetrainType(data) {
+    async RemoveBodyType(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/delete-drivetrain/${data}`, {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-body`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
+                body:JSON.stringify(data),
             });
 
             if (response.ok) {
@@ -564,12 +595,65 @@ export default class AdminService {
         }
     }
 
-    async UpdateBodyType(data) {
+    async RemoveGearboxType(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-gearbox`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveDrivetrainType(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-drivetrain`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateBodyType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-body`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -589,19 +673,21 @@ export default class AdminService {
         }
     }
 
-    async UpdateBrand(data) {
+    async UpdateBrand(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-make`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
 
+            console.log (response);
             if (response.ok) {
                 const responseData = await response.json ();
-
+                console.log (responseData);
                 return {
                     status: response.status,
                     data: responseData,
@@ -614,12 +700,40 @@ export default class AdminService {
         }
     }
 
-    async UpdateModel(data) {
+    async UpdateVehicleCondition(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-condition`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body:JSON.stringify(data)
+            });
+
+            console.log (response);
+            if (response.ok) {
+                const responseData = await response.json ();
+                console.log (responseData);
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateModel(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-model`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -639,12 +753,13 @@ export default class AdminService {
         }
     }
 
-    async UpdateColor(data) {
+    async UpdateColor(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-color`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -664,12 +779,39 @@ export default class AdminService {
         }
     }
 
-    async UpdateOption(data) {
+    async UpdateCountry(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-country`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateOption(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-option`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -689,12 +831,13 @@ export default class AdminService {
         }
     }
 
-    async UpdateMarketVersion(data) {
+    async UpdateMarketVersion(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-market-version`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -714,12 +857,13 @@ export default class AdminService {
         }
     }
 
-    async UpdateGearboxType(data) {
+    async UpdateGearboxType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-gearbox`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -739,12 +883,13 @@ export default class AdminService {
         }
     }
 
-    async UpdateFuelType(data) {
+    async UpdateFuelType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-fuel`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });
@@ -764,12 +909,13 @@ export default class AdminService {
         }
     }
 
-    async UpdateDrivetrainType(data) {
+    async UpdateDrivetrainType(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-drivetrain`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
                 },
                 body:JSON.stringify(data)
             });

@@ -14,6 +14,8 @@ const VehicleGearboxType = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, gearboxType: null});
 
@@ -35,7 +37,7 @@ const VehicleGearboxType = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveGearboxType (selectedRow.id)).then (() => {
+            dispatch (RemoveGearboxType (selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarGearboxTypes().then (
                     (response) => {
                         setListTable (response);
@@ -48,7 +50,7 @@ const VehicleGearboxType = () => {
 
     const handleAddItem = () => {
         if(newGearboxType) {
-            dispatch(AddNewGearboxType(newGearboxType)).then (() => {
+            dispatch(AddNewGearboxType(newGearboxType,admin.token)).then (() => {
                 setNewGearboxType('');
                 const data = CommonDataService.getAllCarGearboxTypes().then((response)=>{
                     setListTable(response);
@@ -61,11 +63,12 @@ const VehicleGearboxType = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newGearboxType) {
             const requestBody={
-                id:selectedRow.id,
-                gearboxType:newGearboxType
+                "gearboxId": selectedRow.id,
+                "newGearbox": newGearboxType
             }
-            dispatch(UpdateGearboxType(requestBody)).then (() => {
+            dispatch(UpdateGearboxType(requestBody,admin.token)).then (() => {
                 setNewGearboxType('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarGearboxTypes().then((response)=>{
                     setListTable(response);
                 });

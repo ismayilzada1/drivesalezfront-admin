@@ -12,6 +12,8 @@ const VehicleMarketVersion = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, marketVersion: null});
 
@@ -33,7 +35,7 @@ const VehicleMarketVersion = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveMarketVersion (selectedRow.id)).then (() => {
+            dispatch (RemoveMarketVersion (selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarMarketVersions().then (
                     (response) => {
                         setListTable (response);
@@ -45,7 +47,7 @@ const VehicleMarketVersion = () => {
     const handleAddItem = () => {
         console.log (newMarketVersion);
         if(newMarketVersion) {
-            dispatch(AddNewMarketVersion(newMarketVersion)).then (() => {
+            dispatch(AddNewMarketVersion(newMarketVersion,admin.token)).then (() => {
                 setNewMarketVersion('');
                 const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);
@@ -57,11 +59,12 @@ const VehicleMarketVersion = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newMarketVersion) {
             const requestBody={
-                id:selectedRow.id,
-                marketVersion:newMarketVersion
+                "marketVersionId": selectedRow.id,
+                "newMarketVersion": newMarketVersion
             }
-            dispatch(UpdateMarketVersion(requestBody)).then (() => {
+            dispatch(UpdateMarketVersion(requestBody,admin.token)).then (() => {
                 setNewMarketVersion('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);
                 });

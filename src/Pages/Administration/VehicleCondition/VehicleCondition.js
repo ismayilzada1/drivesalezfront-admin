@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import commonDataService from "../../../Api-services/CommonDataService";
-import {AddNewFuelType, RemoveFuelType, UpdateFuelType} from "../../../Store/Admin/AdminActions";
+import {AddVehicleCondition, RemoveVehicleCondition, UpdateVehicleCondition} from "../../../Store/Admin/AdminActions";
 import Loading from "../../../Components/ui/Loading";
 
-const VehicleFuelType = () => {
+const VehicleCondition = () => {
 
-    const [newFuelType, setNewFuelType] = useState ('');
+    const [newCondition, setNewCondition] = useState (null);
+    const [newDescription, setNewDescription] = useState (null);
 
 
     const dispatch = useDispatch ();
@@ -16,12 +17,12 @@ const VehicleFuelType = () => {
     const {admin} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
-    const [selectedRow, setSelectedRow] = useState ({id: null, fuelType: null});
+    const [selectedRow, setSelectedRow] = useState ({id: null, condition: null,description:null});
 
     useEffect (() => {
         const fetchData = async () => {
             try {
-                const data = await CommonDataService.getAllCarFuelTypes();
+                const data = await CommonDataService.getAllCarConditions();
                 setListTable (data);
             } catch (error) {
                 console.error ("Error fetching data:", error);
@@ -31,13 +32,13 @@ const VehicleFuelType = () => {
     }, []);
 
     const handleRowClick = (item) => {
-        setSelectedRow ({id: item.id, fuelType: item.fuelType});
+        setSelectedRow ({id: item.id, condition: item.condition, description:item.description});
     };
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveFuelType(selectedRow.id,admin.token)).then(() => {
-                const data = CommonDataService.getAllCarFuelTypes().then (
+            dispatch (RemoveVehicleCondition(selectedRow.id,admin.token)).then (() => {
+                const data = CommonDataService.getAllCarConditions().then (
                     (response) => {
                         setListTable (response);
                     }
@@ -45,13 +46,16 @@ const VehicleFuelType = () => {
             });
         }
     };
-
     const handleAddItem = () => {
-        console.log (newFuelType);
-        if(newFuelType) {
-            dispatch(AddNewFuelType(newFuelType,admin.token)).then (() => {
-                setNewFuelType('');
-                const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
+        if(newCondition) {
+            const requestBody={
+                "condition": newCondition,
+                "description": newDescription
+            }
+            dispatch(AddVehicleCondition(requestBody,admin.token)).then (() => {
+                setNewCondition('');
+                setNewDescription('');
+                const data = CommonDataService.getAllCarConditions().then((response)=>{
                     setListTable(response);
                 });
             });
@@ -59,21 +63,22 @@ const VehicleFuelType = () => {
     };
 
     const handleUpdateItem = () => {
-        if(selectedRow.id && newFuelType) {
+        if(selectedRow.id && newCondition) {
             const requestBody={
-                "fuelTypeId": selectedRow.id,
-                "newFuelType": newFuelType
+                "vehicleConditionId": selectedRow.id,
+                "newVehicleCondition": newCondition,
+                "newDescription": newDescription
             }
-            dispatch(UpdateFuelType(requestBody,admin.token)).then (() => {
-                setNewFuelType('');
+            dispatch(UpdateVehicleCondition(requestBody,admin.token)).then (() => {
+                setNewCondition('');
+                setNewDescription('');
                 setSelectedRow(null);
-                const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
+                const data = CommonDataService.getAllCarConditions().then((response)=>{
                     setListTable(response);
                 });
             });
         }
     };
-
 
     return (
         <div>
@@ -104,7 +109,8 @@ const VehicleFuelType = () => {
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Fuel Type</th>
+                            <th scope="col">Condition</th>
+                            <th scope="col">Description</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -115,7 +121,9 @@ const VehicleFuelType = () => {
                                 className={selectedRow.id === item.id ? "selected my-table" : "my-table"}
                             >
                                 <th scope="row">{item.id}</th>
-                                <td>{item.fuelType}</td>
+                                <td>{item.condition}</td>
+                                <td>{item.description}</td>
+
                             </tr>
                         ))}
                         </tbody>
@@ -162,7 +170,7 @@ const VehicleFuelType = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Change Fuel Type</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Change Brand Name</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -170,16 +178,29 @@ const VehicleFuelType = () => {
                             <div className="modal-body">
 
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Current Fuel Type</label>
-                                    <input value={selectedRow.fuelType} disabled={true} type="text"
+                                    <label htmlFor="exampleInputEmail1">Current Brand Name</label>
+                                    <input value={selectedRow.condition} disabled={true} type="text"
                                            className="form-control mb-0" id="exampleInputEmail1"/>
                                 </div>
 
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Current Description</label>
+                                    <textarea value={selectedRow.description} disabled={true}
+                                           className="form-control mb-2" id="exampleInputEmail1"/>
+                                </div>
+
                                 <div className="form-group m-0">
-                                    <label htmlFor="exampleInputEmail1">New Fuel Type</label>
-                                    <input value={newFuelType} onChange={(e) => setNewFuelType (e.target.value)}
+                                    <label htmlFor="exampleInputEmail1">New Condition Name</label>
+                                    <input value={newCondition} onChange={(e) => setNewCondition (e.target.value)}
+                                           type="text" className="form-control mb-3" id="exampleInputEmail1"
+                                           placeholder="Enter condition name"/>
+
+                                    <label htmlFor="exampleInputEmail1">New Description Name</label>
+                                    <input value={newDescription} onChange={(e) => setNewDescription (e.target.value)}
                                            type="text" className="form-control mb-0" id="exampleInputEmail1"
-                                           placeholder="Enter fuel type"/>
+                                           placeholder="Enter condition name"/>
+
+
                                 </div>
 
                             </div>
@@ -195,7 +216,7 @@ const VehicleFuelType = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Add Fuel Type</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Add Condition</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -203,10 +224,15 @@ const VehicleFuelType = () => {
                             <div className="modal-body">
 
                                 <div className="form-group m-0">
-                                    <label htmlFor="exampleInputEmail1">New Fuel Type</label>
-                                    <input value={newFuelType} onChange={(e) => setNewFuelType(e.target.value)}
-                                           type="text" className="form-control mb-0" id="exampleInputEmail1"
-                                           placeholder="Enter fuel type"/>
+                                    <label htmlFor="exampleInputEmail1">New Condition Name</label>
+                                    <input value={newCondition} onChange={(e) => setNewCondition(e.target.value)}
+                                           type="text" className="form-control mb-3" id="exampleInputEmail1"
+                                           placeholder="Enter new condition"/>
+
+                                    <label htmlFor="exampleInputEmail1">New Description</label>
+                                    <textarea value={newDescription} onChange={(e) => setNewDescription (e.target.value)}
+                                              className="form-control mb-0" id="exampleInputEmail1"
+                                              placeholder="Enter description"/>
                                 </div>
 
                             </div>
@@ -222,14 +248,14 @@ const VehicleFuelType = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Remove Fuel Type</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Remove Brand Name</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
                                 <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove
-                                    "<b>{selectedRow.fuelType}</b>" Fuel Type</p>
+                                    "<b>{selectedRow.condition}</b>" Condition</p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove
@@ -239,10 +265,9 @@ const VehicleFuelType = () => {
                     </div>
                 </div>
 
-
             </div>
         </div>
     );
 };
 
-export default VehicleFuelType;
+export default VehicleCondition;

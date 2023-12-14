@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import commonDataService from "../../../Api-services/CommonDataService";
-import {AddNewFuelType, RemoveFuelType, UpdateFuelType} from "../../../Store/Admin/AdminActions";
+import {AddCountry, RemoveCountry, UpdateCountry} from "../../../Store/Admin/AdminActions";
 import Loading from "../../../Components/ui/Loading";
 
-const VehicleFuelType = () => {
+const Country = () => {
 
-    const [newFuelType, setNewFuelType] = useState ('');
+    const [newCountry, setNewCountry] = useState ('');
 
 
     const dispatch = useDispatch ();
@@ -16,28 +16,29 @@ const VehicleFuelType = () => {
     const {admin} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
-    const [selectedRow, setSelectedRow] = useState ({id: null, fuelType: null});
+    const [selectedRow, setSelectedRow] = useState ({id: null, countryName: null});
 
     useEffect (() => {
         const fetchData = async () => {
             try {
-                const data = await CommonDataService.getAllCarFuelTypes();
+                const data = await CommonDataService.getAllCountries();
                 setListTable (data);
             } catch (error) {
                 console.error ("Error fetching data:", error);
             }
         };
         fetchData ();
+        console.log (admin);
     }, []);
 
     const handleRowClick = (item) => {
-        setSelectedRow ({id: item.id, fuelType: item.fuelType});
+        setSelectedRow ({id: item.id, countryName: item.countryName});
     };
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveFuelType(selectedRow.id,admin.token)).then(() => {
-                const data = CommonDataService.getAllCarFuelTypes().then (
+            dispatch (RemoveCountry(selectedRow.id,admin.token)).then (() => {
+                const data = CommonDataService.getAllCountries().then (
                     (response) => {
                         setListTable (response);
                     }
@@ -45,13 +46,11 @@ const VehicleFuelType = () => {
             });
         }
     };
-
     const handleAddItem = () => {
-        console.log (newFuelType);
-        if(newFuelType) {
-            dispatch(AddNewFuelType(newFuelType,admin.token)).then (() => {
-                setNewFuelType('');
-                const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
+        if(newCountry) {
+            dispatch(AddCountry(newCountry,admin.token)).then (() => {
+                setNewCountry('');
+                const data = CommonDataService.getAllCountries().then((response)=>{
                     setListTable(response);
                 });
             });
@@ -59,21 +58,19 @@ const VehicleFuelType = () => {
     };
 
     const handleUpdateItem = () => {
-        if(selectedRow.id && newFuelType) {
+        if(selectedRow.id && newCountry) {
             const requestBody={
-                "fuelTypeId": selectedRow.id,
-                "newFuelType": newFuelType
+                "countryId":  selectedRow.id,
+                "newCountry": newCountry
             }
-            dispatch(UpdateFuelType(requestBody,admin.token)).then (() => {
-                setNewFuelType('');
-                setSelectedRow(null);
-                const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
+            dispatch(UpdateCountry(requestBody,admin.token)).then (() => {
+                const data = CommonDataService.getAllCountries().then((response)=>{
                     setListTable(response);
                 });
+                setNewCountry('');
             });
         }
     };
-
 
     return (
         <div>
@@ -104,7 +101,7 @@ const VehicleFuelType = () => {
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Fuel Type</th>
+                            <th scope="col">Brand Name</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -115,7 +112,7 @@ const VehicleFuelType = () => {
                                 className={selectedRow.id === item.id ? "selected my-table" : "my-table"}
                             >
                                 <th scope="row">{item.id}</th>
-                                <td>{item.fuelType}</td>
+                                <td>{item.countryName}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -162,7 +159,7 @@ const VehicleFuelType = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Change Fuel Type</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Change Country Name</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -170,16 +167,16 @@ const VehicleFuelType = () => {
                             <div className="modal-body">
 
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Current Fuel Type</label>
-                                    <input value={selectedRow.fuelType} disabled={true} type="text"
+                                    <label htmlFor="exampleInputEmail1">Current Country Name</label>
+                                    <input value={selectedRow.countryName} disabled={true} type="text"
                                            className="form-control mb-0" id="exampleInputEmail1"/>
                                 </div>
 
                                 <div className="form-group m-0">
-                                    <label htmlFor="exampleInputEmail1">New Fuel Type</label>
-                                    <input value={newFuelType} onChange={(e) => setNewFuelType (e.target.value)}
+                                    <label htmlFor="exampleInputEmail1">New Country Name</label>
+                                    <input value={newCountry} onChange={(e) => setNewCountry (e.target.value)}
                                            type="text" className="form-control mb-0" id="exampleInputEmail1"
-                                           placeholder="Enter fuel type"/>
+                                           placeholder="Enter new make"/>
                                 </div>
 
                             </div>
@@ -195,7 +192,7 @@ const VehicleFuelType = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Add Fuel Type</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Add Country Name</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -203,10 +200,10 @@ const VehicleFuelType = () => {
                             <div className="modal-body">
 
                                 <div className="form-group m-0">
-                                    <label htmlFor="exampleInputEmail1">New Fuel Type</label>
-                                    <input value={newFuelType} onChange={(e) => setNewFuelType(e.target.value)}
+                                    <label htmlFor="exampleInputEmail1">New Country Name</label>
+                                    <input value={newCountry} onChange={(e) => setNewCountry(e.target.value)}
                                            type="text" className="form-control mb-0" id="exampleInputEmail1"
-                                           placeholder="Enter fuel type"/>
+                                           placeholder="Enter new make"/>
                                 </div>
 
                             </div>
@@ -222,14 +219,14 @@ const VehicleFuelType = () => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Remove Fuel Type</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Remove Country</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove
-                                    "<b>{selectedRow.fuelType}</b>" Fuel Type</p>
+                                <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove Country
+                                    "<b>{selectedRow.countryName}</b>" </p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove
@@ -239,10 +236,9 @@ const VehicleFuelType = () => {
                     </div>
                 </div>
 
-
             </div>
         </div>
     );
 };
 
-export default VehicleFuelType;
+export default Country;

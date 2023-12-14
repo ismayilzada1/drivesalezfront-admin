@@ -12,6 +12,8 @@ const VehicleModel = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTableBrands, setListTableBrands] = useState ([]);
     const [listTableModels, setListTableModels] = useState ([]);
     const [selectedRowMake, setSelectedRowMake] = useState ({id: null, makeName: null});
@@ -44,7 +46,11 @@ const VehicleModel = () => {
 
 
     useEffect(()=>{
-        if(selectedRowMake){fetchModels();}
+        if(selectedRowMake){
+            fetchModels();
+            setSelectedRowModel({id: null, model: null});
+        }
+
     },[selectedRowMake])
 
     const handleRowClickMake = (item) => {
@@ -56,7 +62,7 @@ const VehicleModel = () => {
 
     const handleRemoveItem = () => {
         if (selectedRowMake.id) {
-            dispatch (RemoveModel(selectedRowModel.id)).then (() => {
+            dispatch (RemoveModel(selectedRowModel.id,admin.token)).then (() => {
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {
                         setListTableBrands(response);
@@ -71,8 +77,9 @@ const VehicleModel = () => {
             const requestBody={
                 "makeId": selectedRowMake.id,
                 "modelName": newModelName
+
             }
-            dispatch(AddNewModel(requestBody)).then (() => {
+            dispatch(AddNewModel(requestBody,admin.token)).then (() => {
                 setnewModelName('');
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {
@@ -87,11 +94,12 @@ const VehicleModel = () => {
     const handleUpdateItem = () => {
         if(selectedRowMake.id && newModelName) {
             const requestBody={
-                id:selectedRowModel.id,
-                modelName:newModelName
+                "modelId": selectedRowModel.id,
+                "newModel": newModelName
             }
-            dispatch(UpdateModel(requestBody)).then (() => {
+            dispatch(UpdateModel(requestBody,admin.token)).then (() => {
                 setnewModelName('');
+                setSelectedRowModel(null);
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {
                         setListTableBrands(response);
@@ -181,7 +189,7 @@ const VehicleModel = () => {
                     <button
                         type="submit"
                         className={`btn  btn-primary ${loading ? 'disabled' : ''}`}
-                        disabled={loading}
+                        disabled={loading || !selectedRowMake.id}
                         style={{marginLeft: '10px'}}
                         data-toggle="modal" data-target="#addModal">
                         Add
@@ -191,9 +199,9 @@ const VehicleModel = () => {
                     <button
                         type="submit"
                         className={`btn  btn-warning  ${loading ? 'disabled' : ''}`}
-                        disabled={loading || !selectedRowMake.id}
                         style={{marginLeft: '10px'}}
-                        data-toggle="modal" data-target="#changeModal">
+                        data-toggle="modal" data-target="#changeModal"
+                        disabled={loading || !selectedRowModel.id}>
                         Change
                     </button>
 
@@ -203,7 +211,7 @@ const VehicleModel = () => {
                         className={`btn  btn-danger  ${loading ? "disabled" : ""}`}
                         style={{marginLeft: '10px'}}
                         data-toggle="modal" data-target="#removeModal"
-                        disabled={loading || !selectedRowMake.id}>
+                        disabled={loading || !selectedRowModel.id}>
                         Remove
                     </button>
 

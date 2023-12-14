@@ -16,6 +16,8 @@ const VehicleDrivetrainType = () => {
     const CommonDataService = new commonDataService();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, drivetrainType: null});
 
@@ -37,7 +39,7 @@ const VehicleDrivetrainType = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveDrivetrainType(selectedRow.id)).then (() => {
+            dispatch (RemoveDrivetrainType(selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarDriveTrainTypes ().then (
                     (response) => {
                         setListTable (response);
@@ -49,7 +51,7 @@ const VehicleDrivetrainType = () => {
 
     const handleAddItem = () => {
         if(newDrivetrainType) {
-            dispatch(AddNewDrivetrainType(newDrivetrainType)).then (() => {
+            dispatch(AddNewDrivetrainType(newDrivetrainType,admin.token)).then (() => {
                 setNewDrivetrainType('');
                 const data = CommonDataService.getAllCarDriveTrainTypes().then((response)=>{
                     setListTable(response);
@@ -61,11 +63,12 @@ const VehicleDrivetrainType = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newDrivetrainType) {
             const requestBody={
-                id:selectedRow.id,
-                bodyType:newDrivetrainType
+                "drivetrainId": selectedRow.id,
+                "newDrivetrain": newDrivetrainType
             }
-            dispatch(UpdateDrivetrainType(requestBody)).then (() => {
+            dispatch(UpdateDrivetrainType(requestBody,admin.token)).then (() => {
                 setNewDrivetrainType('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarDriveTrainTypes().then((response)=>{
                     setListTable(response);
                 });

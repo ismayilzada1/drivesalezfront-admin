@@ -13,6 +13,8 @@ const VehicleMake = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, makeName: null});
 
@@ -26,6 +28,7 @@ const VehicleMake = () => {
             }
         };
         fetchData ();
+        console.log (admin);
     }, []);
 
     const handleRowClick = (brand) => {
@@ -34,7 +37,7 @@ const VehicleMake = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveBrand (selectedRow.id)).then (() => {
+            dispatch (RemoveBrand (selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarMakes ().then (
                     (response) => {
                         setListTable (response);
@@ -44,9 +47,8 @@ const VehicleMake = () => {
         }
     };
     const handleAddItem = () => {
-        console.log (newBrandName);
         if(newBrandName) {
-            dispatch(AddNewBrand(newBrandName)).then (() => {
+            dispatch(AddNewBrand(newBrandName,admin.token)).then (() => {
                 setNewBrandName('');
                 const data = CommonDataService.getAllCarMakes().then((response)=>{
                     setListTable(response);
@@ -58,11 +60,12 @@ const VehicleMake = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newBrandName) {
             const requestBody={
-                id:selectedRow.id,
-                makeName:newBrandName
+                "makeId": selectedRow.id,
+                "newMake": newBrandName
             }
-            dispatch(UpdateBrand(requestBody)).then (() => {
+            dispatch(UpdateBrand(requestBody,admin.token)).then (() => {
                 setNewBrandName('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarMakes().then((response)=>{
                     setListTable(response);
                 });
@@ -224,7 +227,7 @@ const VehicleMake = () => {
                             </div>
                             <div className="modal-body">
                                 <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove
-                                    "<b>{selectedRow.marketVersion}</b>" brand</p>
+                                    "<b>{selectedRow.makeName}</b>" brand</p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove

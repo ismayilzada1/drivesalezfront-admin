@@ -12,6 +12,8 @@ const VehicleColor = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, color: null});
 
@@ -33,7 +35,7 @@ const VehicleColor = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveColor(selectedRow.id)).then (() => {
+            dispatch (RemoveColor(selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarColors().then (
                     (response) => {
                         setListTable (response);
@@ -45,7 +47,7 @@ const VehicleColor = () => {
     const handleAddItem = () => {
         console.log (newColor);
         if(newColor) {
-            dispatch(AddNewColor(newColor)).then (() => {
+            dispatch(AddNewColor(newColor,admin.token)).then (() => {
                 setNewColor('');
                 const data = CommonDataService.getAllCarColors().then((response)=>{
                     setListTable(response);
@@ -57,11 +59,12 @@ const VehicleColor = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newColor) {
             const requestBody={
-                id:selectedRow.id,
-                color:newColor
+                "colorId": selectedRow.id,
+                "newColor": newColor
             }
-            dispatch(UpdateColor(requestBody)).then (() => {
+            dispatch(UpdateColor(requestBody,admin.token)).then (() => {
                 setNewColor('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarColors().then((response)=>{
                     setListTable(response);
                 });

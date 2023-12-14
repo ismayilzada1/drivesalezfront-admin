@@ -12,6 +12,8 @@ const VehicleOption = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
+    const {admin} = useSelector ((state) => state.auth);
+
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, option: null});
 
@@ -33,7 +35,7 @@ const VehicleOption = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveOption(selectedRow.id)).then (() => {
+            dispatch (RemoveOption(selectedRow.id,admin.token)).then (() => {
                 const data = CommonDataService.getAllCarOptions().then (
                     (response) => {
                         setListTable (response);
@@ -45,7 +47,7 @@ const VehicleOption = () => {
     const handleAddItem = () => {
         console.log (newOption);
         if(newOption) {
-            dispatch(AddNewOption(newOption)).then (() => {
+            dispatch(AddNewOption(newOption,admin.token)).then (() => {
                 setNewOption('');
                 const data = CommonDataService.getAllCarOptions().then((response)=>{
                     setListTable(response);
@@ -57,11 +59,12 @@ const VehicleOption = () => {
     const handleUpdateItem = () => {
         if(selectedRow.id && newOption) {
             const requestBody={
-                id:selectedRow.id,
-                option:newOption
+                "vehicleOptionId":selectedRow.id,
+                "newVehicleOption": newOption
             }
-            dispatch(UpdateOption(requestBody)).then (() => {
+            dispatch(UpdateOption(requestBody,admin.token)).then (() => {
                 setNewOption('');
+                setSelectedRow(null);
                 const data = CommonDataService.getAllCarOptions().then((response)=>{
                     setListTable(response);
                 });
@@ -165,7 +168,7 @@ const VehicleOption = () => {
 
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Current Option</label>
-                                    <input value={selectedRow.marketVersion} disabled={true} type="text"
+                                    <input value={selectedRow.option} disabled={true} type="text"
                                            className="form-control mb-0" id="exampleInputEmail1"/>
                                 </div>
 

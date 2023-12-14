@@ -16,6 +16,9 @@ import VehicleColor from "./Pages/Administration/VehicleColor";
 import VehicleModel from "./Pages/Administration/VehicleModel";
 import Moderator from "./Pages/Administration/Moderator";
 import AnnouncementAuthority from "./Pages/Moderator/AnnouncementAuthority";
+import VehicleCondition from "./Pages/Administration/VehicleCondition";
+import City from "./Pages/Administration/City";
+import Country from "./Pages/Administration/Country";
 
 function App() {
 
@@ -40,10 +43,10 @@ function App() {
                   <Route path='/admin-vehicle-make' element={<VehicleMake/>}/>
                   <Route path='/admin-vehicle-model' element={<VehicleModel/>}/>
                   <Route path='/admin-vehicle-bodytype' element={<VehicleBodyType/>}/>
-                  {/*<Route path='/add-city' element={<AddNewCity/>}/>*/}
-                  {/*<Route path='/add-country' element={<AddNewCountry/>}/>*/}
+                  <Route path='/admin-city' element={<City/>}/>
+                  <Route path='/admin-country' element={<Country/>}/>
                   <Route path='/admin-vehicle-color' element={<VehicleColor/>}/>
-                  {/*<Route path='/add-vehicle-condition' element={<AddNewVehicleCondition/>}/>*/}
+                  <Route path='/admin-vehicle-condition' element={<VehicleCondition/>}/>
                   <Route path='/admin-vehicle-option' element={<VehicleOption/>}/>
                   <Route path='/admin-vehicle-drivetrain-type' element={<VehicleDrivetrainType/>}/>
                   <Route path='/admin-vehicle-fuel-type' element={<VehicleFuelType/>}/>
