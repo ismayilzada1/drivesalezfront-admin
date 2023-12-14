@@ -15,6 +15,7 @@ import VehicleOption from "./Pages/Administration/VehicleOption";
 import VehicleColor from "./Pages/Administration/VehicleColor";
 import VehicleModel from "./Pages/Administration/VehicleModel";
 import Moderator from "./Pages/Administration/Moderator";
+import AnnouncementAuthority from "./Pages/Moderator/AnnouncementAuthority";
 
 function App() {
 
@@ -49,6 +50,10 @@ function App() {
                   <Route path='/admin-vehicle-gearbox-type' element={<VehicleGearboxType/>}/>
                   <Route path='/admin-vehicle-market-version' element={<VehicleMarketVersion/>}/>
                   <Route path='/admin-moderator' element={<Moderator/>}/>
+
+
+
+                  <Route path='/moderator-announcement-authority' element={<AnnouncementAuthority/>}/>
 
 
 

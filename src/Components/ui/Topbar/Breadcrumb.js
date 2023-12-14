@@ -1,7 +1,7 @@
 // Breadcrumb.js
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import sidebarData from '../Sidebar/Data/SidebarData';
+import sidebarDataAdmin from '../Sidebar/Data/SidebarDataAdmin';
 
 const Breadcrumb = () => {
     const location = useLocation();
@@ -10,7 +10,7 @@ const Breadcrumb = () => {
     const findBreadcrumbItems = () => {
         let breadcrumbItems = [];
 
-        for (const mainItem of sidebarData) {
+        for (const mainItem of sidebarDataAdmin) {
             if (currentPath.startsWith(mainItem.startsWith)) {
                 breadcrumbItems.push({ text: mainItem.title, link: mainItem.path });
 

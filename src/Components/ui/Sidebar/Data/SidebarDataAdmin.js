@@ -1,4 +1,4 @@
-const sidebarData = [
+const sidebarDataAdmin = [
     {
         title: 'Home',
         path: '/dashboard',
@@ -91,4 +91,4 @@ const sidebarData = [
     // },
 ];
 
-export default sidebarData;
+export default sidebarDataAdmin;
