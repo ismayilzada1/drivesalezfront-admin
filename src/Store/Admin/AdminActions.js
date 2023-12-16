@@ -1,7 +1,15 @@
 import {
     addNewStart,
     addNewSuccess,
-    addNewFail, updateStart, updateSuccess, updateFail, removeStart, removeSuccess, removeFail
+    addNewFail,
+    updateStart,
+    updateSuccess,
+    updateFail,
+    removeStart,
+    removeSuccess,
+    removeFail,
+    rejectConfirmStart,
+    rejectConfirmSuccess, rejectConfirmFail
 } from './AdminSlice';
 
 
@@ -54,7 +62,7 @@ export const AddNewModel = (data,token) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while processing your model request'));
         }
     } catch (error) {
         dispatch(addNewFail('An error occurred while processing your request'));
@@ -197,23 +205,6 @@ export const AddVehicleCondition = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddVehicleModel = (data,token) => async (dispatch) => {
-    dispatch(addNewStart());
-    try {
-        const response = await AdminService.AddNewVehicleModel(data,token);
-
-        if (response.status===200) {
-            console.log("SUCCESFULL ADD NEW Market Version");
-            dispatch(addNewSuccess(response.data));
-            return response;
-        } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
-        }
-    } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
-    }
-};
-
 
 export const AddVehicleManufactureYear = (data,token) => async (dispatch) => {
     dispatch(addNewStart());
@@ -268,19 +259,36 @@ export const AddCity = (data,token) => async (dispatch) => {
 };
 
 export const RemoveBrand = (data,token) => async (dispatch) => {
-    dispatch(addNewStart());
+    dispatch(removeStart());
     try {
         const response = await AdminService.RemoveBrand(data,token);
 
         if (response.status===200) {
             console.log("SUCCESFULL ADD NEW Brand");
-            dispatch(addNewSuccess(response.data));
+            dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while processing your request'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while processing your request'));
+    }
+};
+
+export const RemoveCity = (data,token) => async (dispatch) => {
+    dispatch(removeStart());
+    try {
+        const response = await AdminService.RemoveCity(data,token);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(removeSuccess(response.data));
+            return response;
+        } else {
+            dispatch(removeFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(removeFail('An error occurred while processing your request'));
     }
 };
 
@@ -523,6 +531,23 @@ export const UpdateModel = (data,token) => async (dispatch) => {
     }
 };
 
+export const UpdateCity = (data,token) => async (dispatch) => {
+    dispatch(updateStart());
+    try {
+        const response = await AdminService.UpdateModel(data,token);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW BodY Type");
+            dispatch(updateSuccess(response.data));
+            return response;
+        } else {
+            dispatch(updateFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(updateFail('An error occurred while processing your request'));
+    }
+};
+
 export const UpdateColor = (data,token) => async (dispatch) => {
     dispatch(updateStart());
     try {
@@ -642,3 +667,41 @@ export const RemoveDrivetrainType = (data,token) => async (dispatch) => {
         dispatch(removeFail('An error occurred while processing your request'));
     }
 };
+
+
+export const AddNewModerator = (data,token) => async (dispatch) => {
+    dispatch(addNewStart());
+    try {
+        const response = await AdminService.AddNewModerator(data,token);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(addNewSuccess(response.data));
+            return response;
+        } else {
+            dispatch(addNewFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(addNewFail('An error occurred while processing your request'));
+    }
+};
+
+export const RemoveModerator = (data,token) => async (dispatch) => {
+    dispatch(removeStart());
+    try {
+        const response = await AdminService.RemoveModerator(data,token);
+
+        if (response.status===200) {
+            console.log("SUCCESFULL ADD NEW Brand");
+            dispatch(removeSuccess(response.data));
+            return response;
+        } else {
+            dispatch(removeFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(removeFail('An error occurred while processing your request'));
+    }
+};
+
+
+

@@ -18,9 +18,9 @@ export default class AuthService {
     }
 
 
-    async LoginAdmin(requestBody) {
+    async LoginStaff(requestBody) {
         try {
-            const response = await fetch(`${this.baseUrl}/Account/login-admin`, {
+            const response = await fetch(`${this.baseUrl}/Account/login-staff`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

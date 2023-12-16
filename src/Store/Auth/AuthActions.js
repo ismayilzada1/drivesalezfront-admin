@@ -11,10 +11,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 const AuthService = new authService();
-export const loginAdmin = (credentials) => async (dispatch) => {
+export const loginStaff = (credentials) => async (dispatch) => {
     dispatch(loginStart());
     try {
-        const response = await AuthService.LoginAdmin(credentials);
+        const response = await AuthService.LoginStaff(credentials);
 
         if (response.status===200) {
             console.log("SUCCESFULL LOGIN");

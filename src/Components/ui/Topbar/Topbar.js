@@ -189,7 +189,7 @@ const Topbar = () => {
                                     <div className="iq-card shadow-none m-0">
                                         <div className="iq-card-body p-0 ">
                                             <div className="bg-primary p-3">
-                                                <h5 className="mb-0 text-white line-height">Hello {admin.email} </h5>
+                                                <h5 className="mb-0 text-white line-height">Hello {admin?.email} </h5>
                                             </div>
                                             <a href="profile.html" className="iq-sub-card iq-bg-primary-hover">
                                                 <div className="media align-items-center">
@@ -202,7 +202,7 @@ const Topbar = () => {
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a href="profile-edit.html" className="iq-sub-card iq-bg-primary-success-hover">
+                                            <a href="/moderator-edit-profile" className="iq-sub-card iq-bg-primary-success-hover">
                                                 <div className="media align-items-center">
                                                     <div className=" iq-card-icon iq-bg-success">
                                                         <i className="ri-profile-line"></i>

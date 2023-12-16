@@ -6,8 +6,19 @@ import {useSelector} from "react-redux";
 const Sidebar = () => {
 
     const location = useLocation();
+
+
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const admin = useSelector((state) => state.auth.admin);
-    const isAdmin = admin.userRole==='Admin';
+    const isAdmin = admin?.userRole === "Admin";
+
+    if (!isLoggedIn) {
+        return null;
+    }
+
+
+
+
     return (
         <>
             <div className="iq-sidebar">

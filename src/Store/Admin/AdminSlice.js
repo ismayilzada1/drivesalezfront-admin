@@ -44,6 +44,8 @@ const AdminSlice = createSlice({
             state.error = action.payload;
         },
 
+
+
     },
 });
 
@@ -56,7 +58,8 @@ export const {
     removeSuccess,
     updateFail,
     updateStart,
-    updateSuccess
+    updateSuccess,
+
 
 } = AdminSlice.actions;
 

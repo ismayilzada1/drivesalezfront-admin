@@ -1,24 +1,27 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from "./Pages/SignIn";
-import Home from "./Pages/Home";
+import HomeAdmin from "./Pages/Admin/HomeAdmin";
 import Sidebar from "./Components/ui/Sidebar";
 import Topbar from "./Components/ui/Topbar";
 import { useLocation } from 'react-router-dom';
-import VehicleMake from "./Pages/Administration/VehicleMake";
-import VehicleBodyType from "./Pages/Administration/VehicleBodyType";
-import VehicleDrivetrainType from "./Pages/Administration/VehicleDrivetrainType";
-import VehicleGearboxType from "./Pages/Administration/VehicleGearboxType";
-import VehicleFuelType from "./Pages/Administration/VehicleFuelType";
-import VehicleMarketVersion from "./Pages/Administration/VehicleMarketVersion";
-import VehicleOption from "./Pages/Administration/VehicleOption";
-import VehicleColor from "./Pages/Administration/VehicleColor";
-import VehicleModel from "./Pages/Administration/VehicleModel";
-import Moderator from "./Pages/Administration/Moderator";
-import AnnouncementAuthority from "./Pages/Moderator/AnnouncementAuthority";
-import VehicleCondition from "./Pages/Administration/VehicleCondition";
-import City from "./Pages/Administration/City";
-import Country from "./Pages/Administration/Country";
+import VehicleMake from "./Pages/Admin/Administration/VehicleMake";
+import VehicleBodyType from "./Pages/Admin/Administration/VehicleBodyType";
+import VehicleDrivetrainType from "./Pages/Admin/Administration/VehicleDrivetrainType";
+import VehicleGearboxType from "./Pages/Admin/Administration/VehicleGearboxType";
+import VehicleFuelType from "./Pages/Admin/Administration/VehicleFuelType";
+import VehicleMarketVersion from "./Pages/Admin/Administration/VehicleMarketVersion";
+import VehicleOption from "./Pages/Admin/Administration/VehicleOption";
+import VehicleColor from "./Pages/Admin/Administration/VehicleColor";
+import VehicleModel from "./Pages/Admin/Administration/VehicleModel";
+import Moderator from "./Pages/Admin/Administration/Moderator";
+import AnnouncementAuthority from "./Pages/Moderator/Moderation/AnnouncementAuthority"
+import VehicleCondition from "./Pages/Admin/Administration/VehicleCondition";
+import City from "./Pages/Admin/Administration/City";
+import Country from "./Pages/Admin/Administration/Country";
+import HomeModerator from "./Pages/Moderator/HomeModerator";
+import EditProfile from "./Pages/Moderator/EditProfile";
+import ReviewAnnouncement from "./Pages/Moderator/ReviewAnnouncement";
 
 function App() {
 
@@ -26,7 +29,7 @@ function App() {
 
 
     const excludeSidebarTopbarPaths = [
-        "/sign-in",
+        "/sign-in","/"
     ];
 
     const shouldDisplaySidebarTopbar = !excludeSidebarTopbarPaths.includes(location.pathname);
@@ -36,9 +39,10 @@ function App() {
           {shouldDisplaySidebarTopbar && <Sidebar />}
           {shouldDisplaySidebarTopbar && <Topbar />}
               <Routes>
+                  <Route path="/" element={<SignIn />} />
                   <Route path="/sign-in" element={<SignIn />} />
-                  <Route path='/dashboard' element={<Home/>}/>
-                  <Route path="/" element={<Home />} />
+                  <Route path='/dashboard-admin' element={<HomeAdmin/>}/>
+                  <Route path="/admin" element={<HomeAdmin />} />
 
                   <Route path='/admin-vehicle-make' element={<VehicleMake/>}/>
                   <Route path='/admin-vehicle-model' element={<VehicleModel/>}/>
@@ -55,10 +59,11 @@ function App() {
                   <Route path='/admin-moderator' element={<Moderator/>}/>
 
 
-
+                  <Route path="/dashboard-moderator" element={<HomeModerator />} />
+                  <Route path="/moderator" element={<HomeModerator />} />
                   <Route path='/moderator-announcement-authority' element={<AnnouncementAuthority/>}/>
-
-
+                  <Route path='/moderator-edit-profile' element={<EditProfile/>}/>
+                  <Route path='/moderator-review-announcement/:id' element={<ReviewAnnouncement/>}/>
 
               </Routes>
       </div>

@@ -1,7 +1,7 @@
 const sidebarDataAdmin = [
     {
         title: 'Home',
-        path: '/dashboard',
+        path: '/dashboard-admin',
         icon: 'ri-home-4-line',
     },
 

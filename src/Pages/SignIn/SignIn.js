@@ -2,7 +2,7 @@ import React, {useState}from "react";
 import "./SignIn.css";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAdmin } from '../../Store/Auth/AuthActions';
+import { loginStaff } from '../../Store/Auth/AuthActions';
 import Loading from "../../Components/ui/Loading";
 
 const SignIn = () => {
@@ -25,11 +25,14 @@ const SignIn = () => {
             password: Password,
         };
 
-        const response = await dispatch(loginAdmin(credentials));
+        const response = await dispatch(loginStaff(credentials));
         console.log(response);
 
-        if (response && response.status===200) {
-            navigate('/');
+        if (response && response.status===200 && response.data.userRole==='Admin') {
+            navigate('/dashboard-admin');
+        }
+        else if (response && response.status===200 && response.data.userRole==='Moderator') {
+            navigate('/dashboard-moderator');
         }
         else {
             setShowAlert(true);

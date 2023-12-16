@@ -18,6 +18,23 @@ export default class AdminService {
         }
     }
 
+    async getResourceAuthorize(url, token) {
+        try {
+            const result = await fetch(`${this.baseUrl}${url}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (!result.ok) {
+                throw new Error(`Error: Status code ${result.status}`);
+            }
+            return await result.json();
+        } catch (error) {
+            console.error('Error in getResourceAuthorize:', error);
+            throw error;
+        }
+    }
+
 
     async AddNewColor(data,token) {
         try {
@@ -439,6 +456,32 @@ export default class AdminService {
         }
     }
 
+    async RemoveCity(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-city`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async RemoveCountry(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/delete-country`, {
@@ -729,7 +772,33 @@ export default class AdminService {
 
     async UpdateModel(data,token) {
         try {
-            const response = await fetch (`${this.baseUrl}/Admin/update-model`, {
+            const response = await fetch (`${this.baseUrl}/Admin/update-city`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateCity(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-city`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -934,5 +1003,64 @@ export default class AdminService {
             throw error;
         }
     }
+
+
+    async GetAllModerators(token) {
+        return await this.getResourceAuthorize(`/Admin/get-all-moderators`,token);
+    }
+
+
+    async AddNewModerator(data,token) {
+        try {
+            const response = await fetch(`${this.baseUrl}/Admin/create-moderator`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async RemoveModerator(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/delete-moderator`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 
 }

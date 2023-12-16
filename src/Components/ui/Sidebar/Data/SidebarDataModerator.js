@@ -1,7 +1,7 @@
 const sidebarDataModerator = [
     {
         title: 'Home',
-        path: '/dashboard',
+        path: '/dashboard-moderator',
         icon: 'ri-home-4-line',
     },
 

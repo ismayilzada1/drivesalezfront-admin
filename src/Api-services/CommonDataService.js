@@ -69,5 +69,8 @@ export default class CommonDataService {
         return await this.getResource(`/Details/get-all-cities`);
     }
 
+    async getAllCitiesByUserId(id) {
+        return await this.getResource(`/Details/get-all-cities-by-country-id?id=${id}`);
+    }
 
 }

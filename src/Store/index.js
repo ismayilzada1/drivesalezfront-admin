@@ -5,9 +5,10 @@ import thunk from 'redux-thunk';
 import persistReducer from "redux-persist/es/persistReducer";
 import authReducer from "./Auth/AuthSlice";
 import adminReducer from "./Admin/AdminSlice"
+import announcementReducer from "./Announcement/AnnouncementSlice"
 
 const reducers=combineReducers(
-    {auth:authReducer,admin:adminReducer}
+    {auth:authReducer,admin:adminReducer,announcement:announcementReducer}
 );
 
 const config={
