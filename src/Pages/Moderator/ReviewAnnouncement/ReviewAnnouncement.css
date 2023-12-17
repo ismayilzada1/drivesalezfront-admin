@@ -179,7 +179,7 @@
 
 .modal-content{
     border:0;
-    min-height: 720px;
+    /*min-height: 720px;*/
 }
 .modalImage-body{
     display:flex;

@@ -65,7 +65,6 @@ const VehicleMake = () => {
             }
             dispatch(UpdateBrand(requestBody,admin.token)).then (() => {
                 setNewBrandName('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarMakes().then((response)=>{
                     setListTable(response);
                 });

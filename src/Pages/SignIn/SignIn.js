@@ -66,10 +66,6 @@ const SignIn = () => {
                                        <input value={Password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control mb-0" id="exampleInputPassword1" placeholder="Password"/>
                                    </div>
                                    <div className="d-inline-block w-100">
-                                       <div className="custom-control custom-checkbox d-inline-block mt-2 pt-1">
-                                           <input type="checkbox" className="custom-control-input" id="customCheck1"/>
-                                           <label className="custom-control-label" htmlFor="customCheck1">Remember Me</label>
-                                       </div>
                                        <button onClick={handleSignIn} type="submit" className="btn btn-primary float-right">Sign in</button>
                                    </div>
                                    {showAlert && error && (

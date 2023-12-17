@@ -66,7 +66,6 @@ const VehicleFuelType = () => {
             }
             dispatch(UpdateFuelType(requestBody,admin.token)).then (() => {
                 setNewFuelType('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
                     setListTable(response);
                 });

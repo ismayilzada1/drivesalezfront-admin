@@ -64,7 +64,6 @@ const VehicleColor = () => {
             }
             dispatch(UpdateColor(requestBody,admin.token)).then (() => {
                 setNewColor('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarColors().then((response)=>{
                     setListTable(response);
                 });

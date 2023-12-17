@@ -64,7 +64,6 @@ const VehicleMarketVersion = () => {
             }
             dispatch(UpdateMarketVersion(requestBody,admin.token)).then (() => {
                 setNewMarketVersion('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);
                 });

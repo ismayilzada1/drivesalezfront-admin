@@ -68,7 +68,6 @@ const VehicleGearboxType = () => {
             }
             dispatch(UpdateGearboxType(requestBody,admin.token)).then (() => {
                 setNewGearboxType('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarGearboxTypes().then((response)=>{
                     setListTable(response);
                 });

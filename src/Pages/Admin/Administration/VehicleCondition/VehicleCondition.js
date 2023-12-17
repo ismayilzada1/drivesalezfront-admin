@@ -72,7 +72,6 @@ const VehicleCondition = () => {
             dispatch(UpdateVehicleCondition(requestBody,admin.token)).then (() => {
                 setNewCondition('');
                 setNewDescription('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarConditions().then((response)=>{
                     setListTable(response);
                 });

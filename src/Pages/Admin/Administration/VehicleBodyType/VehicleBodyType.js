@@ -66,7 +66,6 @@ const VehicleBodyType = () => {
             }
             dispatch(UpdateBodyType(requestBody,admin.token)).then (() => {
                 setNewBodyType('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarBodyTypes().then((response)=>{
                     setListTable(response);
                 });

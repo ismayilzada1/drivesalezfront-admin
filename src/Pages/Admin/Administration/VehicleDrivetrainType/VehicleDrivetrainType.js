@@ -68,7 +68,6 @@ const VehicleDrivetrainType = () => {
             }
             dispatch(UpdateDrivetrainType(requestBody,admin.token)).then (() => {
                 setNewDrivetrainType('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarDriveTrainTypes().then((response)=>{
                     setListTable(response);
                 });

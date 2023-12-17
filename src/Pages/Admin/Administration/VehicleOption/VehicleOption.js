@@ -64,7 +64,6 @@ const VehicleOption = () => {
             }
             dispatch(UpdateOption(requestBody,admin.token)).then (() => {
                 setNewOption('');
-                setSelectedRow(null);
                 const data = CommonDataService.getAllCarOptions().then((response)=>{
                     setListTable(response);
                 });

@@ -34,7 +34,7 @@ const City = () => {
 
     const fetchModels = async () => {
         try {
-            const data = await CommonDataService.getAllCitiesByUserId(selectedRowCountry.id);
+            const data = await CommonDataService.getAllCitiesByCountryId(selectedRowCountry.id);
             if (Array.isArray(data)) {
                 setListTableCities(data);
             } else {
@@ -50,6 +50,7 @@ const City = () => {
         if(selectedRowCountry){
             fetchModels();
             setSelectedRowCity({id: null, cityName: null});
+            console.log (listTableCities);
         }
 
     },[selectedRowCountry])

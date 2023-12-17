@@ -99,7 +99,6 @@ const VehicleModel = () => {
             }
             dispatch(UpdateModel(requestBody,admin.token)).then (() => {
                 setnewModelName('');
-                setSelectedRowModel(null);
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {
                         setListTableBrands(response);

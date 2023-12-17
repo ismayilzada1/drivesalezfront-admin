@@ -1,4 +1,5 @@
 export default class AnnouncementService {
+    // _baseUrl = 'https://drivesalez.azurewebsites.net/api';
     _baseUrl = 'https://localhost:7261/api';
 
     async getResource(url) {
@@ -106,7 +107,7 @@ export default class AnnouncementService {
 
     async ConfirmAnnouncement(data,token) {
         try {
-            const response = await fetch(`${this._baseUrl}/Moderator/make-announcement-active/${data}`, {
+            const response = await fetch(`${this._baseUrl}/Moderator/confirm-announcement/${data}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

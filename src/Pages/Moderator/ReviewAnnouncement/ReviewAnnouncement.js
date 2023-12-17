@@ -133,23 +133,21 @@ const ReviewAnnouncement = () => {
         year,
         fuelType,
         isBrandNew,
-        vehicleDetails: {
-            bodyType,
-            color,
-            horsePower,
-            gearboxType,
-            drivetrainType,
-            conditions,
-            marketVersion,
-            ownerQuantity,
-            seatCount,
-            vinCode,
-            options,
-            engineVolume,
-            mileAge,
-            mileageType
-        } = {},
-    } = announcement?.vehicle || {};
+        bodyType,
+        color,
+        horsePower,
+        gearboxType,
+        drivetrainType,
+        conditions,
+        marketVersion,
+        ownerQuantity,
+        seatCount,
+        vinCode,
+        options,
+        engineVolume,
+        mileAge,
+        mileageType
+    } = announcement;
 
     const {
         barter,
@@ -168,7 +166,7 @@ const ReviewAnnouncement = () => {
         firstName,
         lastName,
         phoneNumbers
-    } = announcement || {};
+    } = announcement;
 
     function formatTimestamp(timestamp) {
         const dateObject = new Date (timestamp);
@@ -186,10 +184,10 @@ const ReviewAnnouncement = () => {
     }
 
     const createLabelValue = (label, value) => (
-            <div className="list-group-item d-flex align-items-center">
-                <span className="label info-key mr-3">{label}:</span>
-                <span className="value">{value}</span>
-            </div>
+        <div className="list-group-item d-flex align-items-center">
+            <span className="label info-key mr-3">{label}:</span>
+            <span className="value">{value}</span>
+        </div>
     );
 
     return (
@@ -319,7 +317,7 @@ const ReviewAnnouncement = () => {
 
                                                 <div className="col-sm-6">
                                                     <label>Body Type</label>
-                                                    <p>{bodyType?.bodyType}</p>
+                                                    <p>{announcement.bodyType?.bodyType}</p>
                                                 </div>
 
                                                 <div className="col-sm-6">
@@ -399,7 +397,7 @@ const ReviewAnnouncement = () => {
                                                     <label style={{fontSize: '1.4em'}}>Price</label>
                                                     <p className="main-price text-success font-weight-bold"
                                                        style={{fontSize: '2.2em'}}>
-                                                        {price && `${price} ${currency.currencyName}`}
+                                                        {price && `${price} ${currency?.currencyName}`}
                                                     </p>
                                                 </div>
 
@@ -585,11 +583,11 @@ const ReviewAnnouncement = () => {
                                         {createLabelValue ("Year", year?.year)}
                                         {createLabelValue ("Color", color?.color)}
                                     </ul>
-                                    <h5 className='text-success text-lg-right mt-5'>{price} {currency.currencyName}</h5>
+                                    <h5 className='text-success text-lg-right mt-5'>{price} {currency?.currencyName}</h5>
 
                                 </div>
                                 <button type="button" data-toggle="modal"
-                                        data-target="#addModal" onClick={handleConfirmAnnouncement} className="btn btn-success m-3">Confirm
+                                        data-target="#addModal" data-dismiss="modal" onClick={handleConfirmAnnouncement} className="btn btn-success m-3">Confirm
                                 </button>
 
                             </div>
@@ -645,7 +643,7 @@ const ReviewAnnouncement = () => {
                                             <textarea  className="form-control" cols="40" rows="10"></textarea>
                                         </div>
                                     </ul>
-                                    <h5 className='text-success text-lg-right mt-5'>{price} {currency.currencyName}</h5>
+                                    <h5 className='text-success text-lg-right mt-5'>{price} {currency?.currencyName}</h5>
 
                                 </div>
                                 <button type="button" data-toggle="modal"
