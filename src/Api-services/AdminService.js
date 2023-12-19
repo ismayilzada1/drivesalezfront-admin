@@ -2,8 +2,8 @@ import {json} from "react-router-dom";
 
 export default class AdminService {
     constructor() {
-        // this.baseUrl = 'https://drivesalez.azurewebsites.net/api';
-        this.baseUrl = 'https://localhost:7261/api';
+        this.baseUrl = 'https://drivesalez.azurewebsites.net/api';
+        // this.baseUrl = 'https://localhost:7261/api';
     }
 
     async getResource(url) {
@@ -826,6 +826,32 @@ export default class AdminService {
     async UpdateColor(data,token) {
         try {
             const response = await fetch (`${this.baseUrl}/Admin/update-color`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body:JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json ();
+
+                return {
+                    status: response.status,
+                    data: responseData,
+                };
+            }
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UpdateAnnouncementPricing(data,token) {
+        try {
+            const response = await fetch (`${this.baseUrl}/Admin/update-subscription`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

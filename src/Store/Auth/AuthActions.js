@@ -30,12 +30,12 @@ export const loginStaff = (credentials) => async (dispatch) => {
     }
 };
 
-export const logoutAdmin = (token) => async (dispatch) => {
+export const logoutAdmin = (token,e) => async (dispatch) => {
     dispatch(logoutStart());
     try {
         const response = await AuthService.Logout(token);
 
-
+        console.log (response);
         if (response.status === 204) {
             dispatch(logoutSuccess())
             console.log('SUCCESSFUL Logout');

@@ -32,7 +32,6 @@ const ReviewAnnouncement = () => {
 
 
     const handleCloseModal = () => {
-        console.log (options);
         setShowModal (false);
     };
 
@@ -117,7 +116,7 @@ const ReviewAnnouncement = () => {
     useEffect (() => {
         const fetchData = async () => {
             try {
-                dispatch (SetAnnouncement (id));
+                dispatch (SetAnnouncement (id,admin.token));
             } catch (error) {
                 console.error ('Error fetching announcement:', error);
             }
@@ -145,9 +144,9 @@ const ReviewAnnouncement = () => {
         vinCode,
         options,
         engineVolume,
-        mileAge,
+        mileage,
         mileageType
-    } = announcement;
+    } = announcement || {};
 
     const {
         barter,
@@ -166,7 +165,7 @@ const ReviewAnnouncement = () => {
         firstName,
         lastName,
         phoneNumbers
-    } = announcement;
+    } = announcement || {};
 
     function formatTimestamp(timestamp) {
         const dateObject = new Date (timestamp);
@@ -317,7 +316,7 @@ const ReviewAnnouncement = () => {
 
                                                 <div className="col-sm-6">
                                                     <label>Body Type</label>
-                                                    <p>{announcement.bodyType?.bodyType}</p>
+                                                    <p>{bodyType?.bodyType}</p>
                                                 </div>
 
                                                 <div className="col-sm-6">
@@ -328,7 +327,7 @@ const ReviewAnnouncement = () => {
 
                                                 <div className="col-sm-6">
                                                     <label>Mileage</label>
-                                                    <p>{mileAge} {mileageType}</p>
+                                                    <p>{mileage} {mileageType}</p>
                                                 </div>
 
                                                 <div className="col-sm-6">

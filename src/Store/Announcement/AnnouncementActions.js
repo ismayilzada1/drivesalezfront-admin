@@ -38,11 +38,11 @@ export const SendAnnouncement = (requestBody,token) => async (dispatch) => {
     }
 };
 
-export const GetAnnouncements = (pageNumber,PageSize) => async (dispatch) => {
+export const GetAnnouncements = (pageNumber,PageSize,token) => async (dispatch) => {
     try {
         dispatch(getAnnouncementsStart());
 
-        const response = await AnnouncementService.GetAnnouncements(pageNumber,PageSize);
+        const response = await AnnouncementService.GetAnnouncements(pageNumber,PageSize,token);
         console.log(response);
         if (response.status===200) {
             console.log("SUCCESFULL FETCH ANNOUNCEMENTS");
@@ -79,11 +79,11 @@ export const SetPageNumber = (pageNumber) => async (dispatch) => {
     }
 };
 
-export const SetAnnouncement = (id) => async (dispatch) => {
+export const SetAnnouncement = (id,token) => async (dispatch) => {
     try {
         dispatch(setAnnouncementStart());
 
-        const response = await AnnouncementService.GetAnnouncementByID(id);
+        const response = await AnnouncementService.GetAnnouncementByID(id,token);
 
         if (response.status===200) {
             console.log("SUCCESFULL SET ANNOUNCEMENT");

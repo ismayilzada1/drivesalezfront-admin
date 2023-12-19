@@ -179,7 +179,7 @@ a:hover { text-decoration: none; }
                                Sign In
 -----------------------------------------------------------------------*/
 .sign-in-page { height: 100vh; }
-.sign-in-detail { padding: 100px; height: 100vh; }
+.sign-in-detail { padding: 90px; height: 40vh; }
 .sign-in-logo { display: inline-block; width: 100%; }
 .sign-in-logo img { height: 50px; }
 .sign-in-from { padding: 0 120px; }
@@ -306,7 +306,7 @@ a:hover { text-decoration: none; }
   100% { box-shadow: 0 0 0 15px rgba(0, 132, 255, 0); }
 }
 
-/*---------- Sidebar Logo --------------*/
+/*---------- Sidebar LogoFull --------------*/
 .iq-sidebar-logo { display: inline-block; width: 260px; padding-top: 15px; padding-left: 20px; float: left; position: relative; background: #ffffff; -webkit-transition: all 0.3s ease-out 0s; -moz-transition: all 0.3s ease-out 0s; -ms-transition: all 0.3s ease-out 0s; -o-transition: all 0.3s ease-out 0s; transition: all 0.3s ease-out 0s; }
 .iq-sidebar-logo a { display: flex; align-items: flex-start; }
 .iq-sidebar-logo a span { margin-left: 10px; font-size: 28px; line-height: 45px; color: #374948; font-family: 'Questrial', sans-serif; flex: 1; -webkit-transition: all 0.3s ease-out 0s; -moz-transition: all 0.3s ease-out 0s; -ms-transition: all 0.3s ease-out 0s; -o-transition: all 0.3s ease-out 0s; transition: all 0.3s ease-out 0s; }

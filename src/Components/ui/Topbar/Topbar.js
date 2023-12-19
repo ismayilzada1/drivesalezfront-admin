@@ -2,6 +2,8 @@ import "./Topbar.css";
 import Breadcrumb from "./Breadcrumb";
 import {useDispatch, useSelector} from "react-redux";
 import {logoutAdmin} from "../../../Store/Auth/AuthActions";
+import React from "react";
+import Logo from "../Logo";
 
 const Topbar = () => {
 
@@ -9,7 +11,11 @@ const Topbar = () => {
     const dispatch = useDispatch ();
 
     const handleLogout = async() => {
-        if(admin){await dispatch(logoutAdmin(admin.token))}
+        if(admin)
+        {
+            await dispatch(logoutAdmin(admin.token));
+        }
+
     };
 
 
@@ -20,8 +26,8 @@ const Topbar = () => {
                     <div className="iq-sidebar-logo">
                         <div className="top-logo">
                             <a href="index.html" className="logo">
-                                <img src="../assets/images/logo.png" className="img-fluid" alt=""/>
-                                    <span>Sofbox</span>
+                                <Logo/>
+                                <span>DriveSalez</span>
                             </a>
                         </div>
                     </div>
@@ -191,52 +197,52 @@ const Topbar = () => {
                                             <div className="bg-primary p-3">
                                                 <h5 className="mb-0 text-white line-height">Hello {admin?.email} </h5>
                                             </div>
-                                            <a href="profile.html" className="iq-sub-card iq-bg-primary-hover">
-                                                <div className="media align-items-center">
-                                                    <div className=" iq-card-icon iq-bg-primary">
-                                                        <i className="ri-file-user-line"></i>
-                                                    </div>
-                                                    <div className="media-body ml-3">
-                                                        <h6 className="mb-0 ">My Profile</h6>
-                                                        <p className="mb-0 font-size-12">View personal profile details.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="/moderator-edit-profile" className="iq-sub-card iq-bg-primary-success-hover">
-                                                <div className="media align-items-center">
-                                                    <div className=" iq-card-icon iq-bg-success">
-                                                        <i className="ri-profile-line"></i>
-                                                    </div>
-                                                    <div className="media-body ml-3">
-                                                        <h6 className="mb-0 ">Edit Profile</h6>
-                                                        <p className="mb-0 font-size-12">Modify your personal details.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="account-setting.html" className="iq-sub-card iq-bg-primary-danger-hover">
-                                                <div className="media align-items-center">
-                                                    <div className=" iq-card-icon iq-bg-danger">
-                                                        <i className="ri-account-box-line"></i>
-                                                    </div>
-                                                    <div className="media-body ml-3">
-                                                        <h6 className="mb-0 ">Account settings</h6>
-                                                        <p className="mb-0 font-size-12">Manage your account parameters.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="privacy-setting.html" className="iq-sub-card iq-bg-primary-secondary-hover">
-                                                <div className="media align-items-center">
-                                                    <div className=" iq-card-icon iq-bg-secondary">
-                                                        <i className="ri-lock-line"></i>
-                                                    </div>
-                                                    <div className="media-body ml-3">
-                                                        <h6 className="mb-0 ">Privacy Settings</h6>
-                                                        <p className="mb-0 font-size-12">Control your privacy parameters.</p>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                            {/*<a href="profile.html" className="iq-sub-card iq-bg-primary-hover">*/}
+                                            {/*    <div className="media align-items-center">*/}
+                                            {/*        <div className=" iq-card-icon iq-bg-primary">*/}
+                                            {/*            <i className="ri-file-user-line"></i>*/}
+                                            {/*        </div>*/}
+                                            {/*        <div className="media-body ml-3">*/}
+                                            {/*            <h6 className="mb-0 ">My Profile</h6>*/}
+                                            {/*            <p className="mb-0 font-size-12">View personal profile details.</p>*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</a>*/}
+                                            {/*<a href="/moderator-edit-profile" className="iq-sub-card iq-bg-primary-success-hover">*/}
+                                            {/*    <div className="media align-items-center">*/}
+                                            {/*        <div className=" iq-card-icon iq-bg-success">*/}
+                                            {/*            <i className="ri-profile-line"></i>*/}
+                                            {/*        </div>*/}
+                                            {/*        <div className="media-body ml-3">*/}
+                                            {/*            <h6 className="mb-0 ">Edit Profile</h6>*/}
+                                            {/*            <p className="mb-0 font-size-12">Modify your personal details.</p>*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</a>*/}
+                                            {/*<a href="account-setting.html" className="iq-sub-card iq-bg-primary-danger-hover">*/}
+                                            {/*    <div className="media align-items-center">*/}
+                                            {/*        <div className=" iq-card-icon iq-bg-danger">*/}
+                                            {/*            <i className="ri-account-box-line"></i>*/}
+                                            {/*        </div>*/}
+                                            {/*        <div className="media-body ml-3">*/}
+                                            {/*            <h6 className="mb-0 ">Account settings</h6>*/}
+                                            {/*            <p className="mb-0 font-size-12">Manage your account parameters.</p>*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</a>*/}
+                                            {/*<a href="privacy-setting.html" className="iq-sub-card iq-bg-primary-secondary-hover">*/}
+                                            {/*    <div className="media align-items-center">*/}
+                                            {/*        <div className=" iq-card-icon iq-bg-secondary">*/}
+                                            {/*            <i className="ri-lock-line"></i>*/}
+                                            {/*        </div>*/}
+                                            {/*        <div className="media-body ml-3">*/}
+                                            {/*            <h6 className="mb-0 ">Privacy Settings</h6>*/}
+                                            {/*            <p className="mb-0 font-size-12">Control your privacy parameters.</p>*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</a>*/}
                                             <div className="d-inline-block w-100 text-center p-3">
-                                                <a className="iq-bg-danger iq-sign-btn" href="sign-in.html" onClick={handleLogout} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
+                                                <a className="iq-bg-danger iq-sign-btn" href={'/sign-in'} onClick={handleLogout} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
                                             </div>
                                         </div>
                                     </div>

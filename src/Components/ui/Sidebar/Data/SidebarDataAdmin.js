@@ -22,6 +22,7 @@ const sidebarDataAdmin = [
             {title: 'Vehicle Option', path: '/admin-vehicle-option'},
             {title: 'Vehicle Condition', path: '/admin-vehicle-condition'},
             {title: 'Vehicle Color', path: '/admin-vehicle-color'},
+            {title: 'Subscription', path: '/admin-subscription'},
             {title: 'Country', path: '/admin-country'},
             {title: 'City', path: '/admin-city'},
         ],

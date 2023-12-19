@@ -565,6 +565,23 @@ export const UpdateColor = (data,token) => async (dispatch) => {
     }
 };
 
+export const UpdateAnnouncementPricing = (data,token) => async (dispatch) => {
+    dispatch(updateStart());
+    try {
+        const response = await AdminService.UpdateAnnouncementPricing(data,token);
+
+        if (response.status===200) {
+            dispatch(updateSuccess(response.data));
+            return response;
+        } else {
+            dispatch(updateFail('An error occurred while processing your request'));
+        }
+    } catch (error) {
+        dispatch(updateFail('An error occurred while processing your request'));
+    }
+};
+
+
 export const UpdateCountry = (data,token) => async (dispatch) => {
     dispatch(updateStart());
     try {

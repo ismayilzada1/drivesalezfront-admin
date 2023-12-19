@@ -13,6 +13,8 @@ const AnnouncementAuthority = () => {
     const dispatch = useDispatch();
     const { announcements, loading, error, pageNumber,hasMore } = useSelector((state) => state.announcement);
 
+    const {admin}=useSelector((state)=>state.auth);
+
     const pageSize = 3;
 
     useEffect (() => {
@@ -22,7 +24,7 @@ const AnnouncementAuthority = () => {
 
     useEffect(() => {
 
-        dispatch(GetAnnouncements(pageNumber, pageSize))
+        dispatch(GetAnnouncements(pageNumber, pageSize,admin.token))
             .then((response) => {})
             .catch((error) => {
                 console.error('Error fetching announcements:', error);

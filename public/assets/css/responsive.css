@@ -142,7 +142,7 @@ NOTE: This file contains the styling for responsive Template.
 	.iq-email-to-list ul li { margin: 0 5px 0 0; }
 	.iq-email-to-list .justify-content-between { float: left; width: 900px; }
 	.sign-in-from { padding: 0 30px; }
-	.sign-in-detail { padding: 100px 50px; }
+	.sign-in-detail { padding: 60px 30px; }
 }
 @media (min-width:992px) and (max-width:1199px) {
 	.iq-chat-ui li a{padding: 20px 0;}

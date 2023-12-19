@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import SignIn from "./Pages/SignIn";
 import HomeAdmin from "./Pages/Admin/HomeAdmin";
 import Sidebar from "./Components/ui/Sidebar";
@@ -22,11 +22,14 @@ import Country from "./Pages/Admin/Administration/Country";
 import HomeModerator from "./Pages/Moderator/HomeModerator";
 import EditProfile from "./Pages/Moderator/EditProfile";
 import ReviewAnnouncement from "./Pages/Moderator/ReviewAnnouncement";
+import Subscription from "./Pages/Admin/Administration/Subscription";
+import {useSelector} from "react-redux";
 
 function App() {
 
     const location = useLocation();
 
+    const isLoggedIn = useSelector((state) => state.auth);
 
     const excludeSidebarTopbarPaths = [
         "/sign-in","/"
@@ -41,7 +44,7 @@ function App() {
               <Routes>
                   <Route path="/" element={<SignIn />} />
                   <Route path="/sign-in" element={<SignIn />} />
-                  <Route path='/dashboard-admin' element={<HomeAdmin/>}/>
+                  <Route path='/dashboard-admin' element={isLoggedIn ? <Navigate to="/dashboard-admin" /> : <SignIn />}/>
                   <Route path="/admin" element={<HomeAdmin />} />
 
                   <Route path='/admin-vehicle-make' element={<VehicleMake/>}/>
@@ -57,6 +60,7 @@ function App() {
                   <Route path='/admin-vehicle-gearbox-type' element={<VehicleGearboxType/>}/>
                   <Route path='/admin-vehicle-market-version' element={<VehicleMarketVersion/>}/>
                   <Route path='/admin-moderator' element={<Moderator/>}/>
+                  <Route path='/admin-subscription' element={<Subscription/>}/>
 
 
                   <Route path="/dashboard-moderator" element={<HomeModerator />} />

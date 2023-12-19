@@ -1,6 +1,6 @@
 export default class AnnouncementService {
-    // _baseUrl = 'https://drivesalez.azurewebsites.net/api';
-    _baseUrl = 'https://localhost:7261/api';
+    _baseUrl = 'https://drivesalez.azurewebsites.net/api';
+    // _baseUrl = 'https://localhost:7261/api';
 
     async getResource(url) {
         try {
@@ -40,12 +40,13 @@ export default class AnnouncementService {
         }
     }
 
-    async GetAnnouncements(pageNumber = 1, pageSize = 10){
+    async GetAnnouncements(pageNumber = 1, pageSize = 10,token){
         try {
             const response = await fetch(`${this._baseUrl}/Announcement/get-all-waiting-announcements?PageNumber=${pageNumber}&PageSize=${pageSize}&announcementState=2`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
             });
 
@@ -61,18 +62,22 @@ export default class AnnouncementService {
     }
 
 
-    async GetAnnouncementByID(id){
+    async GetAnnouncementByID(id,token){
         try {
 
             const response = await fetch(`${this._baseUrl}/Announcement/get-announcement-by-id/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
             });
+            console.log ("resp");
+            console.log (response);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+
 
             return response;
         } catch (error) {

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginStaff } from '../../Store/Auth/AuthActions';
 import Loading from "../../Components/ui/Loading";
+import LogoFull from "../../Components/ui/LogoFull";
 
 const SignIn = () => {
 
@@ -59,11 +60,11 @@ const SignIn = () => {
                                <form className="mt-4">
                                    <div className="form-group">
                                        <label htmlFor="exampleInputEmail1">Email address</label>
-                                       <input value={Email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email"/>
+                                       <input value={Email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control mb-0" id="exampleInputEmail1" />
                                    </div>
                                    <div className="form-group">
                                        <label htmlFor="exampleInputPassword1">Password</label>
-                                       <input value={Password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control mb-0" id="exampleInputPassword1" placeholder="Password"/>
+                                       <input value={Password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control mb-0" id="exampleInputPassword1" />
                                    </div>
                                    <div className="d-inline-block w-100">
                                        <button onClick={handleSignIn} type="submit" className="btn btn-primary float-right">Sign in</button>
@@ -98,7 +99,8 @@ const SignIn = () => {
                        <div className="col-sm-6 text-center">
                            <div className="sign-in-detail text-white" style={{ background: "url('../assets/images/login/2.jpg') no-repeat 0 0", backgroundSize: "cover" }}>
                                <a className="sign-in-logo mb-2" href="#">
-                                   <h1>DriveSalez Logo</h1>
+                                   {/*<h1>DriveSalez Logo</h1>*/}
+                                   <LogoFull width={"150px"}/>
                                    {/*<img src="assets/images/logo-white.png" class="img-fluid" alt="logo">*/}
                                </a>
 

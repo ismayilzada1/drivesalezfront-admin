@@ -1,6 +1,6 @@
 export default class CommonDataService {
-    // _base_url = 'https://drivesalez.azurewebsites.net/api';
-    _base_url = 'https://localhost:7261/api';
+    _base_url = 'https://drivesalez.azurewebsites.net/api';
+    // _base_url = 'https://localhost:7261/api';
 
     async getResource(url) {
         try {
@@ -72,6 +72,14 @@ export default class CommonDataService {
 
     async getAllCitiesByCountryId(id) {
         return await this.getResource(`/Details/get-all-cities-by-country-id?countryId=${id}`);
+    }
+
+    async getAllAnnouncementPricings() {
+        return await this.getResource(`/Details/get-all-announcement-pricings`);
+    }
+
+    async getAllCurrencies() {
+        return await this.getResource(`/Details/get-all-currencies`);
     }
 
 }
