@@ -1,19 +1,44 @@
 import "./Topbar.css";
 import Breadcrumb from "./Breadcrumb";
 import {useDispatch, useSelector} from "react-redux";
-import {logoutAdmin} from "../../../Store/Auth/AuthActions";
+import {logoutStaff} from "../../../Store/Auth/AuthActions";
 import React from "react";
 import Logo from "../Logo";
+import SidebarDataAdmin from "../Sidebar/Data/SidebarDataAdmin";
+import SidebarDataModerator from "../Sidebar/Data/SidebarDataModerator";
 
 const Topbar = () => {
 
-    const admin = useSelector((state) => state.auth.admin);
+    const { admin,AdminAccessToken} = useSelector ((state) => state.auth);
     const dispatch = useDispatch ();
 
+    let BreadCrumbData=null
+
+    if(admin.Role==="Admin"){
+        BreadCrumbData=SidebarDataAdmin
+    }
+    else if(admin.Role==="Moderator"){
+        BreadCrumbData=SidebarDataModerator
+    }
+    else{
+        return null;
+    }
+
     const handleLogout = async() => {
-        if(admin)
+        if(AdminAccessToken)
         {
-            await dispatch(logoutAdmin(admin.token));
+            await dispatch(logoutStaff(AdminAccessToken)).then((resp)=>{
+                console.log (resp);
+            });
+        }
+        else{
+            const token=sessionStorage.getItem('AdminAuthToken');
+            if(token){
+                await dispatch(logoutStaff(token));
+            }
+            else{
+                console.log ("Something went wrong with tokens");
+            }
         }
 
     };
@@ -32,7 +57,7 @@ const Topbar = () => {
                         </div>
                     </div>
 
-                    <Breadcrumb />
+                    <Breadcrumb  BreadCrumbData={BreadCrumbData}/>
                     <nav className="navbar navbar-expand-lg navbar-light p-0">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i className="ri-menu-3-line"></i>
@@ -242,7 +267,7 @@ const Topbar = () => {
                                             {/*    </div>*/}
                                             {/*</a>*/}
                                             <div className="d-inline-block w-100 text-center p-3">
-                                                <a className="iq-bg-danger iq-sign-btn" href={'/sign-in'} onClick={handleLogout} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
+                                                <a className="iq-bg-danger iq-sign-btn" href={'/auth/sign-in'} onClick={handleLogout} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
                                             </div>
                                         </div>
                                     </div>

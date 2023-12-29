@@ -11,7 +11,7 @@ const sidebarDataModerator = [
         icon: 'ri-admin-line',
         startsWith: '/moderator',
         submenu: [
-            {title: 'Announcement Authority', path: '/moderator-announcement-authority'},
+            {title: 'Announcement Authority', path: '/moderator/announcement-authority'},
         ],
     },
 

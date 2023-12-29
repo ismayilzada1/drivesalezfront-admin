@@ -3,14 +3,14 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import sidebarDataAdmin from '../Sidebar/Data/SidebarDataAdmin';
 
-const Breadcrumb = () => {
+const Breadcrumb = ({BreadCrumbData}) => {
     const location = useLocation();
     const currentPath = location.pathname;
 
     const findBreadcrumbItems = () => {
         let breadcrumbItems = [];
 
-        for (const mainItem of sidebarDataAdmin) {
+        for (const mainItem of BreadCrumbData) {
             if (currentPath.startsWith(mainItem.startsWith)) {
                 breadcrumbItems.push({ text: mainItem.title, link: mainItem.path });
 
