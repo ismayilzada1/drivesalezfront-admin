@@ -28,7 +28,6 @@ const Topbar = () => {
         if(AdminAccessToken)
         {
             await dispatch(logoutStaff(AdminAccessToken)).then((resp)=>{
-                console.log (resp);
             });
         }
         else{
@@ -267,7 +266,7 @@ const Topbar = () => {
                                             {/*    </div>*/}
                                             {/*</a>*/}
                                             <div className="d-inline-block w-100 text-center p-3">
-                                                <a className="iq-bg-danger iq-sign-btn" href={'/auth/sign-in'} onClick={handleLogout} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
+                                                <a className="iq-bg-danger iq-sign-btn"  onClick={(e)=>{handleLogout()}} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
                                             </div>
                                         </div>
                                     </div>

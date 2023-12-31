@@ -54,8 +54,7 @@ const SignIn = () => {
         <div className="container-fluid">
             <div className="row no-gutter">
                 <div className="col-md-6 d-none d-md-flex bg-image"></div>
-
-                <div className="col-md-6 bg-light">
+                <div className="col-md-6 sign-in-container">
                     <div className="login d-flex align-items-center py-5">
 
                         <div className="container">
@@ -68,24 +67,25 @@ const SignIn = () => {
                                             <input id="inputEmail" value={Email}
                                                    onChange={(e) => setEmail (e.target.value)} type="email"
                                                    placeholder="Email address" required="" autoFocus=""
-                                                   className="form-control rounded-pill border-0 shadow-sm px-4"/>
+                                                   className="form-control  rounded-pill shadow-sm px-4"/>
                                         </div>
                                         <div className="form-group mb-3">
                                             <input id="inputPassword" value={Password}
                                                    onChange={(e) => setPassword (e.target.value)} type="password"
                                                    placeholder="Password" required=""
-                                                   className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"/>
+                                                   className="form-control rounded-pill border-0 shadow-sm px-4"/>
                                         </div>
 
                                         <div className="form-group">
-                                            <div className="custom-control custom-checkbox">
-                                                <input type="checkbox"  checked={rememberMe}
-                                                       onChange={handleRememberMeChange}
-                                                       className="custom-control-input"
-                                                       id="checkMe"/>
-                                                    <label className="custom-control-label" htmlFor="checkMe">Remember Me?</label>
+                                            <div className="form-check m-2">
+                                                <input type="checkbox" className="form-check-input" id="checkMe" checked={rememberMe} onChange={handleRememberMeChange} />
+                                                <label className="form-check-label" htmlFor="checkMe">Remember Me?</label>
                                             </div>
+
                                         </div>
+
+
+
 
                                         <button type="submit" onClick={handleSignIn} disabled={loading}
                                                 className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">
@@ -119,7 +119,6 @@ const SignIn = () => {
 
                     </div>
                 </div>
-
             </div>
         </div>
 

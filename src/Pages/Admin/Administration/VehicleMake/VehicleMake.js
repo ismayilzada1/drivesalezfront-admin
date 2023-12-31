@@ -13,7 +13,7 @@ const VehicleMake = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, makeName: null});
@@ -28,7 +28,6 @@ const VehicleMake = () => {
             }
         };
         fetchData ();
-        console.log (admin);
     }, []);
 
     const handleRowClick = (brand) => {
@@ -37,7 +36,7 @@ const VehicleMake = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveBrand (selectedRow.id,admin.token)).then (() => {
+            dispatch (RemoveBrand (selectedRow.id,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCarMakes ().then (
                     (response) => {
                         setListTable (response);
@@ -48,7 +47,7 @@ const VehicleMake = () => {
     };
     const handleAddItem = () => {
         if(newBrandName) {
-            dispatch(AddNewBrand(newBrandName,admin.token)).then (() => {
+            dispatch(AddNewBrand(newBrandName,AdminAccessToken)).then (() => {
                 setNewBrandName('');
                 const data = CommonDataService.getAllCarMakes().then((response)=>{
                     setListTable(response);
@@ -63,7 +62,7 @@ const VehicleMake = () => {
                 "makeId": selectedRow.id,
                 "newMake": newBrandName
             }
-            dispatch(UpdateBrand(requestBody,admin.token)).then (() => {
+            dispatch(UpdateBrand(requestBody,AdminAccessToken)).then (() => {
                 setNewBrandName('');
                 const data = CommonDataService.getAllCarMakes().then((response)=>{
                     setListTable(response);

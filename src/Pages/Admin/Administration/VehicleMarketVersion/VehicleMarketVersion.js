@@ -12,7 +12,7 @@ const VehicleMarketVersion = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, marketVersion: null});
@@ -35,7 +35,7 @@ const VehicleMarketVersion = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveMarketVersion (selectedRow.id,admin.token)).then (() => {
+            dispatch (RemoveMarketVersion (selectedRow.id,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCarMarketVersions().then (
                     (response) => {
                         setListTable (response);
@@ -47,7 +47,7 @@ const VehicleMarketVersion = () => {
     const handleAddItem = () => {
         console.log (newMarketVersion);
         if(newMarketVersion) {
-            dispatch(AddNewMarketVersion(newMarketVersion,admin.token)).then (() => {
+            dispatch(AddNewMarketVersion(newMarketVersion,AdminAccessToken)).then (() => {
                 setNewMarketVersion('');
                 const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);
@@ -62,7 +62,7 @@ const VehicleMarketVersion = () => {
                 "marketVersionId": selectedRow.id,
                 "newMarketVersion": newMarketVersion
             }
-            dispatch(UpdateMarketVersion(requestBody,admin.token)).then (() => {
+            dispatch(UpdateMarketVersion(requestBody,AdminAccessToken)).then (() => {
                 setNewMarketVersion('');
                 const data = CommonDataService.getAllCarMarketVersions().then((response)=>{
                     setListTable(response);

@@ -12,7 +12,7 @@ const VehicleModel = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTableBrands, setListTableBrands] = useState ([]);
     const [listTableModels, setListTableModels] = useState ([]);
@@ -62,7 +62,7 @@ const VehicleModel = () => {
 
     const handleRemoveItem = () => {
         if (selectedRowMake.id) {
-            dispatch (RemoveModel(selectedRowModel.id,admin.token)).then (() => {
+            dispatch (RemoveModel(selectedRowModel.id,AdminAccessToken)).then (() => {
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {
                         setListTableBrands(response);
@@ -79,7 +79,7 @@ const VehicleModel = () => {
                 "modelName": newModelName
 
             }
-            dispatch(AddNewModel(requestBody,admin.token)).then (() => {
+            dispatch(AddNewModel(requestBody,AdminAccessToken)).then (() => {
                 setnewModelName('');
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {
@@ -97,7 +97,7 @@ const VehicleModel = () => {
                 "modelId": selectedRowModel.id,
                 "newModel": newModelName
             }
-            dispatch(UpdateModel(requestBody,admin.token)).then (() => {
+            dispatch(UpdateModel(requestBody,AdminAccessToken)).then (() => {
                 setnewModelName('');
                 const dataBrands = CommonDataService.getAllCarMakes().then (
                     (response) => {

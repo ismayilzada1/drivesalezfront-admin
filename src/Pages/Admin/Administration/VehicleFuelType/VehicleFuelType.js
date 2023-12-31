@@ -13,7 +13,7 @@ const VehicleFuelType = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, fuelType: null});
@@ -36,7 +36,7 @@ const VehicleFuelType = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveFuelType(selectedRow.id,admin.token)).then(() => {
+            dispatch (RemoveFuelType(selectedRow.id,AdminAccessToken)).then(() => {
                 const data = CommonDataService.getAllCarFuelTypes().then (
                     (response) => {
                         setListTable (response);
@@ -49,7 +49,7 @@ const VehicleFuelType = () => {
     const handleAddItem = () => {
         console.log (newFuelType);
         if(newFuelType) {
-            dispatch(AddNewFuelType(newFuelType,admin.token)).then (() => {
+            dispatch(AddNewFuelType(newFuelType,AdminAccessToken)).then (() => {
                 setNewFuelType('');
                 const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
                     setListTable(response);
@@ -64,7 +64,7 @@ const VehicleFuelType = () => {
                 "fuelTypeId": selectedRow.id,
                 "newFuelType": newFuelType
             }
-            dispatch(UpdateFuelType(requestBody,admin.token)).then (() => {
+            dispatch(UpdateFuelType(requestBody,AdminAccessToken)).then (() => {
                 setNewFuelType('');
                 const data = CommonDataService.getAllCarFuelTypes().then((response)=>{
                     setListTable(response);

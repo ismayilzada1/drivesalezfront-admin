@@ -19,7 +19,7 @@ const AnnouncementCard = (props) => {
     );
 
     const handleCardClick=()=>{
-        navigate(`/moderator-review-announcement/${id}`);
+        navigate(`/moderator/review-announcement/${id}`);
     }
 
 
@@ -38,17 +38,17 @@ const AnnouncementCard = (props) => {
                     )}
 
                     <div className="card-body announcement-card-body">
-                        <h4 className="card-title">{make.makeName} {model.modelName}</h4>
+                        <h4 className="card-title">{make?.makeName} {model?.modelName}</h4>
 
                         <ul className="list-group list-group-flush m-0 p-0 b-0">
-                            {createLabelValue("Fuel Type", fuelType.fuelType)}
-                            {createLabelValue("Year", year.year)}
+                            {createLabelValue("Fuel Type", fuelType?.fuelType)}
+                            {createLabelValue("Year", year?.year)}
                             {createLabelValue("Mileage", `${mileage} ${mileageType}`)}
                             {createLabelValue("Engine Volume", engineVolume)}
 
                         </ul>
 
-                        <h5 className="card-title text-success float-start h3 mt-2">{price} {currency.currencyName}</h5>
+                        <h5 className="card-title text-success float-start h3 mt-2">{price} {currency?.currencyName}</h5>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ const Subscription = () => {
     const CommonDataService = new commonDataService();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null,pricingName:null,price:null});
@@ -51,7 +51,7 @@ const Subscription = () => {
                 "price": newPrice,
                 "currencyId": selectedCurrency.id
             }
-            dispatch(UpdateAnnouncementPricing(requestBody,admin.token)).then (() => {
+            dispatch(UpdateAnnouncementPricing(requestBody,AdminAccessToken)).then (() => {
                 setNewPrice('');
                 const data = CommonDataService.getAllAnnouncementPricings().then((response)=>{
                     setListTable(response);

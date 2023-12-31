@@ -19,8 +19,14 @@ import VehicleColor from "./Pages/Admin/Administration/VehicleColor";
 import Subscription from "./Pages/Admin/Administration/Subscription";
 import HomeModerator from "./Pages/Moderator/HomeModerator";
 import AnnouncementAuthority from "./Pages/Moderator/Moderation/AnnouncementAuthority";
+import EditProfile from "./Pages/Moderator/EditProfile";
+import ReviewAnnouncement from "./Pages/Moderator/ReviewAnnouncement";
 
 const routes = [
+    {
+        path: '/',
+        element: <SignIn/>,
+    },
     {
         path: "/admin",
         element: <AdminLayout />,
@@ -93,17 +99,6 @@ const routes = [
             {
                 path: 'subscription',
                 element: <Subscription />,
-                auth: true,
-            },
-        ],
-    },
-    {
-        path: "/moderator",
-        element: <AdminLayout />,
-        children: [
-            {
-                path: 'announcement-authority',
-                element: <AnnouncementAuthority />,
                 auth: true,
             },
         ],
@@ -190,11 +185,28 @@ const routes = [
             },
         ],
     },
-
     {
-        path: '/',
-        element: <SignIn/>,
-    }
+        path: "/moderator",
+        element: <AdminLayout />,
+        children: [
+            {
+                path: 'announcement-authority',
+                element: <AnnouncementAuthority />,
+                auth: true,
+            },
+            {
+                path: 'edit-profile',
+                element: <EditProfile />,
+                auth: true,
+            },
+            {
+                path: 'review-announcement/:id',
+                element: <ReviewAnnouncement />,
+                auth: true,
+            },
+        ],
+    },
+
 ];
 
 const authMap = (routes) => routes.map((route) => {

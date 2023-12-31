@@ -68,6 +68,7 @@ const authSlice = createSlice({
             state.AdminRefreshToken=null;
             sessionStorage.removeItem("AdminAuthToken");
             sessionStorage.removeItem("AdminRefreshToken");
+            console.log ("logout success finished");
         },
         logoutFailure: (state,action) => {
             state.loading = false;

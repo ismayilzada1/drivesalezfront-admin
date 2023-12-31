@@ -38,18 +38,21 @@ export const SendAnnouncement = (requestBody,token) => async (dispatch) => {
     }
 };
 
-export const GetAnnouncements = (pageNumber,PageSize,token) => async (dispatch) => {
+export const GetAnnouncements = (pageNumber,PageSize,accessToken) => async (dispatch) => {
+    dispatch(getAnnouncementsStart());
     try {
-        dispatch(getAnnouncementsStart());
+
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
 
         const response = await AnnouncementService.GetAnnouncements(pageNumber,PageSize,token);
-        console.log(response);
         if (response.status===200) {
             console.log("SUCCESFULL FETCH ANNOUNCEMENTS");
             const data=await response.json();
-            console.log("data");
-            console.log(data);
-            console.log(data.length);
             if(data.length===0){
                 return {
                     response,
@@ -79,9 +82,15 @@ export const SetPageNumber = (pageNumber) => async (dispatch) => {
     }
 };
 
-export const SetAnnouncement = (id,token) => async (dispatch) => {
+export const SetAnnouncement = (id,accessToken) => async (dispatch) => {
+    dispatch(setAnnouncementStart());
     try {
-        dispatch(setAnnouncementStart());
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
 
         const response = await AnnouncementService.GetAnnouncementByID(id,token);
 
@@ -98,9 +107,16 @@ export const SetAnnouncement = (id,token) => async (dispatch) => {
     }
 };
 
-export const RejectAnnouncement = (data,token) => async (dispatch) => {
+export const RejectAnnouncement = (data,accessToken) => async (dispatch) => {
     dispatch(rejectConfirmStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AnnouncementService.RejectAnnouncement(data,token);
 
         if (response.status===200) {
@@ -115,9 +131,16 @@ export const RejectAnnouncement = (data,token) => async (dispatch) => {
     }
 };
 
-export const ConfirmAnnouncement = (data,token) => async (dispatch) => {
+export const ConfirmAnnouncement = (data,accessToken) => async (dispatch) => {
     dispatch(rejectConfirmStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AnnouncementService.ConfirmAnnouncement(data,token);
 
         if (response.status===200) {

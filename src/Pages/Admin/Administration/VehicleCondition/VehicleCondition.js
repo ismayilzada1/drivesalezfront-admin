@@ -14,7 +14,7 @@ const VehicleCondition = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, condition: null,description:null});
@@ -37,7 +37,7 @@ const VehicleCondition = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveVehicleCondition(selectedRow.id,admin.token)).then (() => {
+            dispatch (RemoveVehicleCondition(selectedRow.id,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCarConditions().then (
                     (response) => {
                         setListTable (response);
@@ -52,7 +52,7 @@ const VehicleCondition = () => {
                 "condition": newCondition,
                 "description": newDescription
             }
-            dispatch(AddVehicleCondition(requestBody,admin.token)).then (() => {
+            dispatch(AddVehicleCondition(requestBody,AdminAccessToken)).then (() => {
                 setNewCondition('');
                 setNewDescription('');
                 const data = CommonDataService.getAllCarConditions().then((response)=>{
@@ -69,7 +69,7 @@ const VehicleCondition = () => {
                 "newVehicleCondition": newCondition,
                 "newDescription": newDescription
             }
-            dispatch(UpdateVehicleCondition(requestBody,admin.token)).then (() => {
+            dispatch(UpdateVehicleCondition(requestBody,AdminAccessToken)).then (() => {
                 setNewCondition('');
                 setNewDescription('');
                 const data = CommonDataService.getAllCarConditions().then((response)=>{

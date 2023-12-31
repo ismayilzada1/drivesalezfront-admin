@@ -60,11 +60,11 @@ General
 *::-moz-selection { background: #0084ff; color: #ffffff; text-shadow: none; }
 ::-moz-selection { background: #0084ff; color: #ffffff; text-shadow: none; }
 ::selection { background: #0084ff; color: #ffffff; text-shadow: none; }
-body { font-family: 'Poppins', sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.8; padding: 0; margin: 0; color: #777D74; background: #f3f7fd; }
+body { font-family: sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.8; padding: 0; margin: 0; color: #777D74; background: #f3f7fd; }
 a, .btn { -webkit-transition: all 0.5s ease-out 0s; -moz-transition: all 0.5s ease-out 0s; -ms-transition: all 0.5s ease-out 0s; -o-transition: all 0.5s ease-out 0s; transition: all 0.5s ease-out 0s; }
 a, button, input, btn { outline: medium none !important; }
 .uppercase { text-transform: uppercase; }
-h1, h2, h3, h4, h5, h6 { font-family: 'Questrial', sans-serif; font-weight: 600; margin: 0px; line-height: 1.5; color: #374948; }
+h1, h2, h3, h4, h5, h6 { font-family:  sans-serif; font-weight: 600; margin: 0px; line-height: 1.5; color: #374948; }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; }
 label { font-weight: normal; }
 h1 { font-size: 3.052em; }
@@ -316,19 +316,19 @@ Card
 .iq-card .iq-card-header { padding: 0 20px; min-height: 60px; border-bottom: 1px solid #f2edff; -ms-flex-align: center !important; align-items: center !important; }
 .iq-card .iq-card-header .iq-header-title { display: inline-block; align-self: center !important; }
 .iq-card .iq-card-header .iq-header-title .card-title { margin-bottom: 0; }
-.iq-card-header-toolbar .nav-item a { color: #393c52; padding: 4px 12px; font-size: 14px; font-weight: 600; font-family: 'Nunito', sans-serif; }
+.iq-card-header-toolbar .nav-item a { color: #393c52; padding: 4px 12px; font-size: 14px; font-weight: 600; font-family:  sans-serif; }
 .iq-card-header-toolbar .dropdown-toggle i { font-size: 22px; line-height: normal; color: #393c52; }
 .iq-card-header-toolbar .dropdown-toggle::after { display: none; }
 
 /*--------------*/
-.nav-pills .nav-item a { color: #393c52; font-weight: 600; font-family: 'Questrial', sans-serif; }
+.nav-pills .nav-item a { color: #393c52; font-weight: 600; font-family:  sans-serif; }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link { color: #0084ff; background-color: #e5f2ff; }
 .nav-pills .nav-link:hover { color: #0084ff; }
 
 /*--------------*/
 .nav-tabs { border-bottom: 2px solid #f2edff; margin-bottom: 15px; }
 .nav-tabs .nav-item { margin-bottom: -2px; }
-.nav-tabs .nav-item a { color: #393c52; font-weight: 600; font-family: 'Questrial', sans-serif; border: none; border-bottom: 2px solid transparent; }
+.nav-tabs .nav-item a { color: #393c52; font-weight: 600; font-family:  sans-serif; border: none; border-bottom: 2px solid transparent; }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active { border-bottom: 2px solid #0084ff; color: #0084ff; }
 
 /*---------------------------------------------------------------------
@@ -351,7 +351,7 @@ Background overlay color
 /*----------------------------------------------
 Buttons
 ------------------------------------------------*/
-.btn { font-size: 14px; font-family: 'Questrial', sans-serif; }
+.btn { font-size: 14px; font-family: sans-serif; }
 .btn.focus, .btn:focus { box-shadow: none !important; }
 .btn i { margin-right: 5px;}
 .iq-sign-btn { display: inline-block; text-align: center; border: 1px solid transparent; padding: .375rem 1rem; border-radius: .25rem; }

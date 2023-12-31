@@ -12,7 +12,7 @@ const VehicleOption = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, option: null});
@@ -35,7 +35,7 @@ const VehicleOption = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveOption(selectedRow.id,admin.token)).then (() => {
+            dispatch (RemoveOption(selectedRow.id,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCarOptions().then (
                     (response) => {
                         setListTable (response);
@@ -47,7 +47,7 @@ const VehicleOption = () => {
     const handleAddItem = () => {
         console.log (newOption);
         if(newOption) {
-            dispatch(AddNewOption(newOption,admin.token)).then (() => {
+            dispatch(AddNewOption(newOption,AdminAccessToken)).then (() => {
                 setNewOption('');
                 const data = CommonDataService.getAllCarOptions().then((response)=>{
                     setListTable(response);
@@ -62,7 +62,7 @@ const VehicleOption = () => {
                 "vehicleOptionId":selectedRow.id,
                 "newVehicleOption": newOption
             }
-            dispatch(UpdateOption(requestBody,admin.token)).then (() => {
+            dispatch(UpdateOption(requestBody,AdminAccessToken)).then (() => {
                 setNewOption('');
                 const data = CommonDataService.getAllCarOptions().then((response)=>{
                     setListTable(response);

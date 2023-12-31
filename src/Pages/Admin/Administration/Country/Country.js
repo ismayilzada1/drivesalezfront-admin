@@ -13,7 +13,7 @@ const Country = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, countryName: null});
@@ -28,7 +28,6 @@ const Country = () => {
             }
         };
         fetchData ();
-        console.log (admin);
     }, []);
 
     const handleRowClick = (item) => {
@@ -37,7 +36,7 @@ const Country = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveCountry(selectedRow.id,admin.token)).then (() => {
+            dispatch (RemoveCountry(selectedRow.id,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCountries().then (
                     (response) => {
                         setListTable (response);
@@ -48,7 +47,7 @@ const Country = () => {
     };
     const handleAddItem = () => {
         if(newCountry) {
-            dispatch(AddCountry(newCountry,admin.token)).then (() => {
+            dispatch(AddCountry(newCountry,AdminAccessToken)).then (() => {
                 setNewCountry('');
                 const data = CommonDataService.getAllCountries().then((response)=>{
                     setListTable(response);
@@ -63,7 +62,7 @@ const Country = () => {
                 "countryId":  selectedRow.id,
                 "newCountry": newCountry
             }
-            dispatch(UpdateCountry(requestBody,admin.token)).then (() => {
+            dispatch(UpdateCountry(requestBody,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCountries().then((response)=>{
                     setListTable(response);
                 });

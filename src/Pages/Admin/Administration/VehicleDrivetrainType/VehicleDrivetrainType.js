@@ -16,7 +16,7 @@ const VehicleDrivetrainType = () => {
     const CommonDataService = new commonDataService();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, drivetrainType: null});
@@ -39,7 +39,7 @@ const VehicleDrivetrainType = () => {
 
     const handleRemoveItem = () => {
         if (selectedRow.id) {
-            dispatch (RemoveDrivetrainType(selectedRow.id,admin.token)).then (() => {
+            dispatch (RemoveDrivetrainType(selectedRow.id,AdminAccessToken)).then (() => {
                 const data = CommonDataService.getAllCarDriveTrainTypes ().then (
                     (response) => {
                         setListTable (response);
@@ -51,7 +51,7 @@ const VehicleDrivetrainType = () => {
 
     const handleAddItem = () => {
         if(newDrivetrainType) {
-            dispatch(AddNewDrivetrainType(newDrivetrainType,admin.token)).then (() => {
+            dispatch(AddNewDrivetrainType(newDrivetrainType,AdminAccessToken)).then (() => {
                 setNewDrivetrainType('');
                 const data = CommonDataService.getAllCarDriveTrainTypes().then((response)=>{
                     setListTable(response);
@@ -66,7 +66,7 @@ const VehicleDrivetrainType = () => {
                 "drivetrainId": selectedRow.id,
                 "newDrivetrain": newDrivetrainType
             }
-            dispatch(UpdateDrivetrainType(requestBody,admin.token)).then (() => {
+            dispatch(UpdateDrivetrainType(requestBody,AdminAccessToken)).then (() => {
                 setNewDrivetrainType('');
                 const data = CommonDataService.getAllCarDriveTrainTypes().then((response)=>{
                     setListTable(response);

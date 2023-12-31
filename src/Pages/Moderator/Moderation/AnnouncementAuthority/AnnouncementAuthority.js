@@ -43,11 +43,10 @@ const AnnouncementAuthority = () => {
     };
 
 
-
-
-    // if (loading && pageNumber === 1) {
-    //     return <LoadingPage />;
+    // if(loading && pageNumber===1){
+    //     return <LoadingPage/>
     // }
+
 
     if (error) {
         return <p>Error: {error}</p>;
@@ -56,24 +55,28 @@ const AnnouncementAuthority = () => {
     return (
         <div id="content-page" className="content-page">
         <Row className="wrapper">
-            <InfiniteScroll
-                dataLength={announcements.length}
-                next={fetchData}
-                hasMore={hasMore}
-                scrollThreshold={0.8}
-            >
-                <div className="container-fluid pt-3">
-                    <div className="d-flex flex-row flex-wrap justify-content-between">
-                        {announcements?.map((car, index) => (
-                            <div className="col mb-2 ms-2 me-2" key={index}>
-                                <AnnouncementCard {...car} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </InfiniteScroll>
-        </Row>
+                <InfiniteScroll
+                    dataLength={announcements.length}
+                    next={fetchData}
+                    hasMore={hasMore}
+                    scrollThreshold={0.8}
+                >
+                    <div className="container-fluid pt-3">
+                        {announcements.length === 0 ? (
+                            <h4>There's no announcement right now.</h4>
+                        ) : (
 
+                        <div className="d-flex flex-row flex-wrap justify-content-between">
+                            {announcements?.map((car, index) => (
+                                <div className="col mb-2 ms-2 me-2" key={index}>
+                                    <AnnouncementCard {...car} />
+                                </div>
+                            ))}
+                        </div>
+                            )}
+                    </div>
+                </InfiniteScroll>
+        </Row>
         </div>
 
     );

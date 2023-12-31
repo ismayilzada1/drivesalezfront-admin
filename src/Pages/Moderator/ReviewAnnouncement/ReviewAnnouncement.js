@@ -12,7 +12,7 @@ const ReviewAnnouncement = () => {
 
     const {announcement, loading, error} = useSelector ((state) => state.announcement);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const dispatch = useDispatch ();
 
@@ -97,8 +97,8 @@ const ReviewAnnouncement = () => {
 
     const handleRejectAnnouncement=async()=>{
         try {
-            await dispatch(RejectAnnouncement(id,admin.token));
-            navigate('/moderator-announcement-authority');
+            await dispatch(RejectAnnouncement(id,AdminAccessToken));
+            navigate('/moderator/announcement-authority');
         } catch (error) {
             console.error ('Error fetching announcement:', error);
         }
@@ -106,8 +106,8 @@ const ReviewAnnouncement = () => {
 
     const handleConfirmAnnouncement=async()=>{
         try {
-            await dispatch(ConfirmAnnouncement(id,admin.token));
-            navigate('/moderator-announcement-authority');
+            await dispatch(ConfirmAnnouncement(id,AdminAccessToken));
+            navigate('/moderator/announcement-authority');
         } catch (error) {
             console.error ('Error fetching announcement:', error);
         }
@@ -116,7 +116,7 @@ const ReviewAnnouncement = () => {
     useEffect (() => {
         const fetchData = async () => {
             try {
-                dispatch (SetAnnouncement (id,admin.token));
+                dispatch (SetAnnouncement (id,AdminAccessToken));
             } catch (error) {
                 console.error ('Error fetching announcement:', error);
             }
@@ -394,8 +394,8 @@ const ReviewAnnouncement = () => {
 
                                                 <div className="col-sm-12">
                                                     <label style={{fontSize: '1.4em'}}>Price</label>
-                                                    <p className="main-price text-success font-weight-bold"
-                                                       style={{fontSize: '2.2em'}}>
+                                                    <p className="main-price text-success"
+                                                       style={{fontSize: '2.2em',fontWeight:500}}>
                                                         {price && `${price} ${currency?.currencyName}`}
                                                     </p>
                                                 </div>

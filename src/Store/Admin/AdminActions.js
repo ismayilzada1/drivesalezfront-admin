@@ -18,9 +18,17 @@ import {useSelector} from "react-redux";
 
 
 const AdminService = new adminService();
-export const AddNewColor = (data,token) => async (dispatch) => {
+export const AddNewColor = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+
         const response = await AdminService.AddNewColor(data,token);
 
         if (response.status===200) {
@@ -35,9 +43,16 @@ export const AddNewColor = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewBrand = (data,token) => async (dispatch) => {
+export const AddNewBrand = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewBrand(data,token);
 
         if (response.status===200) {
@@ -52,9 +67,16 @@ export const AddNewBrand = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewModel = (data,token) => async (dispatch) => {
+export const AddNewModel = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewVehicleModel(data,token);
 
         if (response.status===200) {
@@ -69,9 +91,17 @@ export const AddNewModel = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewOption = (data,token) => async (dispatch) => {
+export const AddNewOption = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+
         const response = await AdminService.AddNewVehicleOption(data,token);
 
         if (response.status===200) {
@@ -86,9 +116,16 @@ export const AddNewOption = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewBodyType = (data,token) => async (dispatch) => {
+export const AddNewBodyType = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewBodyType(data,token);
 
         if (response.status===200) {
@@ -103,9 +140,16 @@ export const AddNewBodyType = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewFuelType = (data,token) => async (dispatch) => {
+export const AddNewFuelType = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewFuelType(data,token);
 
         if (response.status===200) {
@@ -120,9 +164,17 @@ export const AddNewFuelType = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewDrivetrainType = (data,token) => async (dispatch) => {
+export const AddNewDrivetrainType = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewDrivetrainType(data,token);
 
         if (response.status===200) {
@@ -137,9 +189,16 @@ export const AddNewDrivetrainType = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewGearboxType = (data,token) => async (dispatch) => {
+export const AddNewGearboxType = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewGearboxType(data,token);
 
         if (response.status===200) {
@@ -154,9 +213,16 @@ export const AddNewGearboxType = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddNewMarketVersion = (data,token) => async (dispatch) => {
+export const AddNewMarketVersion = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewMarketVersion(data,token);
 
         if (response.status===200) {
@@ -171,9 +237,17 @@ export const AddNewMarketVersion = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddVehicleOption = (data,token) => async (dispatch) => {
+export const AddVehicleOption = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+
         const response = await AdminService.AddNewVehicleOption(data,token);
 
         if (response.status===200) {
@@ -188,9 +262,16 @@ export const AddVehicleOption = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddVehicleCondition = (data,token) => async (dispatch) => {
+export const AddVehicleCondition = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewVehicleCondition(data,token);
 
         if (response.status===200) {
@@ -206,9 +287,16 @@ export const AddVehicleCondition = (data,token) => async (dispatch) => {
 };
 
 
-export const AddVehicleManufactureYear = (data,token) => async (dispatch) => {
+export const AddVehicleManufactureYear = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewVehicleManufactureYear(data,token);
 
         if (response.status===200) {
@@ -224,9 +312,16 @@ export const AddVehicleManufactureYear = (data,token) => async (dispatch) => {
 };
 
 
-export const AddCountry = (data,token) => async (dispatch) => {
+export const AddCountry = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewCountry(data,token);
 
         if (response.status===200) {
@@ -241,9 +336,16 @@ export const AddCountry = (data,token) => async (dispatch) => {
     }
 };
 
-export const AddCity = (data,token) => async (dispatch) => {
+export const AddCity = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewCity(data,token);
 
         if (response.status===200) {
@@ -258,9 +360,16 @@ export const AddCity = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveBrand = (data,token) => async (dispatch) => {
+export const RemoveBrand = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveBrand(data,token);
 
         if (response.status===200) {
@@ -275,9 +384,17 @@ export const RemoveBrand = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveCity = (data,token) => async (dispatch) => {
+export const RemoveCity = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+
         const response = await AdminService.RemoveCity(data,token);
 
         if (response.status===200) {
@@ -292,9 +409,17 @@ export const RemoveCity = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveCountry = (data,token) => async (dispatch) => {
+export const RemoveCountry = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+
         const response = await AdminService.RemoveCountry(data,token);
 
         if (response.status===200) {
@@ -309,9 +434,16 @@ export const RemoveCountry = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveModel = (data,token) => async (dispatch) => {
+export const RemoveModel = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveModel(data,token);
 
         if (response.status===200) {
@@ -326,9 +458,16 @@ export const RemoveModel = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveColor = (data,token) => async (dispatch) => {
+export const RemoveColor = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveColor(data,token);
 
         if (response.status===200) {
@@ -343,9 +482,16 @@ export const RemoveColor = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveVehicleCondition = (data,token) => async (dispatch) => {
+export const RemoveVehicleCondition = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveVehicleCondition(data,token);
 
         if (response.status===200) {
@@ -360,9 +506,16 @@ export const RemoveVehicleCondition = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveOption = (data,token) => async (dispatch) => {
+export const RemoveOption = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveOption(data,token);
 
         if (response.status===200) {
@@ -377,9 +530,16 @@ export const RemoveOption = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveMarketVersion = (data,token) => async (dispatch) => {
+export const RemoveMarketVersion = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveMarketVersion(data,token);
 
         if (response.status===200) {
@@ -394,9 +554,16 @@ export const RemoveMarketVersion = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveFuelType = (data,token) => async (dispatch) => {
+export const RemoveFuelType = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveFuelType(data,token);
 
         if (response.status===200) {
@@ -411,9 +578,16 @@ export const RemoveFuelType = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveBodyType = (data,token) => async (dispatch) => {
+export const RemoveBodyType = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveBodyType(data,token);
 
         if (response.status===200) {
@@ -428,9 +602,16 @@ export const RemoveBodyType = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveGearboxType = (data,token) => async (dispatch) => {
+export const RemoveGearboxType = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveGearboxType(data,token);
 
         if (response.status===200) {
@@ -445,9 +626,16 @@ export const RemoveGearboxType = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateBodyType = (data,token) => async (dispatch) => {
+export const UpdateBodyType = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateBodyType(data,token);
 
         if (response.status===200) {
@@ -462,9 +650,16 @@ export const UpdateBodyType = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateGearboxType = (data,token) => async (dispatch) => {
+export const UpdateGearboxType = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateGearboxType(data,token);
 
         if (response.status===200) {
@@ -480,9 +675,16 @@ export const UpdateGearboxType = (data,token) => async (dispatch) => {
 };
 
 
-export const UpdateBrand = (data,token) => async (dispatch) => {
+export const UpdateBrand = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateBrand(data,token);
 
         if (response.status===200) {
@@ -497,9 +699,16 @@ export const UpdateBrand = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateVehicleCondition = (data,token) => async (dispatch) => {
+export const UpdateVehicleCondition = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateVehicleCondition(data,token);
 
         if (response.status===200) {
@@ -514,9 +723,16 @@ export const UpdateVehicleCondition = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateModel = (data,token) => async (dispatch) => {
+export const UpdateModel = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateModel(data,token);
 
         if (response.status===200) {
@@ -531,9 +747,16 @@ export const UpdateModel = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateCity = (data,token) => async (dispatch) => {
+export const UpdateCity = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateModel(data,token);
 
         if (response.status===200) {
@@ -548,9 +771,16 @@ export const UpdateCity = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateColor = (data,token) => async (dispatch) => {
+export const UpdateColor = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateColor(data,token);
 
         if (response.status===200) {
@@ -565,9 +795,16 @@ export const UpdateColor = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateAnnouncementPricing = (data,token) => async (dispatch) => {
+export const UpdateAnnouncementPricing = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateAnnouncementPricing(data,token);
 
         if (response.status===200) {
@@ -582,9 +819,16 @@ export const UpdateAnnouncementPricing = (data,token) => async (dispatch) => {
 };
 
 
-export const UpdateCountry = (data,token) => async (dispatch) => {
+export const UpdateCountry = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateCountry(data,token);
 
         if (response.status===200) {
@@ -599,9 +843,16 @@ export const UpdateCountry = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateOption = (data,token) => async (dispatch) => {
+export const UpdateOption = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateOption(data,token);
 
         if (response.status===200) {
@@ -616,9 +867,16 @@ export const UpdateOption = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateMarketVersion = (data,token) => async (dispatch) => {
+export const UpdateMarketVersion = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateMarketVersion(data,token);
 
         if (response.status===200) {
@@ -633,9 +891,16 @@ export const UpdateMarketVersion = (data,token) => async (dispatch) => {
     }
 };
 
-export const UpdateFuelType = (data,token) => async (dispatch) => {
+export const UpdateFuelType = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateFuelType(data,token);
 
         if (response.status===200) {
@@ -651,9 +916,16 @@ export const UpdateFuelType = (data,token) => async (dispatch) => {
 };
 
 
-export const UpdateDrivetrainType = (data,token) => async (dispatch) => {
+export const UpdateDrivetrainType = (data,accessToken) => async (dispatch) => {
     dispatch(updateStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.UpdateDrivetrainType(data,token);
 
         if (response.status===200) {
@@ -668,9 +940,16 @@ export const UpdateDrivetrainType = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveDrivetrainType = (data,token) => async (dispatch) => {
+export const RemoveDrivetrainType = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveDrivetrainType(data,token);
 
         if (response.status===200) {
@@ -686,9 +965,17 @@ export const RemoveDrivetrainType = (data,token) => async (dispatch) => {
 };
 
 
-export const AddNewModerator = (data,token) => async (dispatch) => {
+export const AddNewModerator = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.AddNewModerator(data,token);
 
         if (response.status===200) {
@@ -703,9 +990,16 @@ export const AddNewModerator = (data,token) => async (dispatch) => {
     }
 };
 
-export const RemoveModerator = (data,token) => async (dispatch) => {
+export const RemoveModerator = (data,accessToken) => async (dispatch) => {
     dispatch(removeStart());
     try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
         const response = await AdminService.RemoveModerator(data,token);
 
         if (response.status===200) {

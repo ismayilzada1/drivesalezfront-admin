@@ -2,8 +2,8 @@ import {json} from "react-router-dom";
 
 export default class AdminService {
     constructor() {
-        // this.baseUrl = 'https://drivesalez.azurewebsites.net/api';
-        this.baseUrl = 'https://localhost:7261/api';
+        this.baseUrl = 'https://drivesalez.azurewebsites.net/api';
+        // this.baseUrl = 'https://localhost:7261/api';
     }
 
     async getResource(url) {
@@ -1032,7 +1032,15 @@ export default class AdminService {
     }
 
 
-    async GetAllModerators(token) {
+    async GetAllModerators(accessToken) {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+
+        if (!token) {
+            return null;
+        }
+
         return await this.getResourceAuthorize(`/Admin/get-all-moderators`,token);
     }
 

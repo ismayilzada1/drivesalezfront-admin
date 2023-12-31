@@ -16,7 +16,7 @@ const Moderator = () => {
     const AdminService = new adminService();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTable, setListTable] = useState ([]);
     const [selectedRow, setSelectedRow] = useState ({id: null, email: null,name:null,surname:null});
@@ -24,7 +24,7 @@ const Moderator = () => {
     useEffect (() => {
         const fetchData = async () => {
             try {
-                const data = await AdminService.GetAllModerators(admin.token);
+                const data = await AdminService.GetAllModerators(AdminAccessToken);
                 setListTable (data);
                 console.log (data);
             } catch (error) {
@@ -39,10 +39,10 @@ const Moderator = () => {
     };
 
     const handleRemoveItem = () => {
-        if (selectedRow.id) {
+        if (selectedRow?.id) {
 
-            dispatch (RemoveModerator(selectedRow.id,admin.token)).then (() => {
-                const data = AdminService.GetAllModerators(admin.token).then (
+            dispatch (RemoveModerator(selectedRow?.id,AdminAccessToken)).then (() => {
+                const data = AdminService.GetAllModerators(AdminAccessToken).then (
                     (response) => {
                         setListTable (response);
                     }
@@ -52,28 +52,35 @@ const Moderator = () => {
         }
     };
     const handleAddItem = () => {
-        if(newModeratorName && newModeratorSurname && newModeratorEmail && newModeratorPassword) {
-
-            const requestBody={
+        if (newModeratorName && newModeratorSurname && newModeratorEmail && newModeratorPassword) {
+            const requestBody = {
                 "email": newModeratorEmail,
                 "firstName": newModeratorName,
                 "lastName": newModeratorSurname,
                 "password": newModeratorPassword
             }
 
-            dispatch(AddNewModerator(requestBody,admin.token)).then (() => {
-                setNewModeratorName('');
-                setNewModeratorSurname('');
-                setNewModeratorEmail('');
-                setNewModeratorPassword('');
-
-                const data = AdminService.GetAllModerators(admin.token).then((response)=>{
+            dispatch(AddNewModerator(requestBody, AdminAccessToken))
+                .then(() => {
+                    console.log('Moderator added successfully.');
+                    return AdminService.GetAllModerators(AdminAccessToken);
+                })
+                .then((response) => {
+                    console.log('Fetching updated moderator list:', response);
                     setListTable(response);
+                })
+                .then(()=>{
+                    setNewModeratorName('');
+                    setNewModeratorSurname('');
+                    setNewModeratorEmail('');
+                    setNewModeratorPassword('');
+                })
+                .catch((error) => {
+                    console.error('Error adding moderator:', error);
                 });
-            });
-
         }
     };
+
 
     const handleUpdateItem = () => {
         // if(selectedRow.id && newModeratorName && newModeratorSurname && newModeratorEmail && newModeratorPassword) {
@@ -126,16 +133,16 @@ const Moderator = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {listTable.map ((item, index) => (
+                        {listTable?.map ((item, index) => (
                             <tr
                                 key={index}
                                 onClick={() => handleRowClick (item)}
-                                className={selectedRow.id === item.id ? "selected my-table" : "my-table"}
-                            >
+                                className={selectedRow?.id === item?.id ? "selected my-table" : "my-table"}>
+
                                 <th scope="row">{item.id}</th>
-                                <td>{item.name}</td>
-                                <td>{item.surname}</td>
-                                <td>{item.email}</td>
+                                <td>{item?.name}</td>
+                                <td>{item?.surname}</td>
+                                <td>{item?.email}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -158,7 +165,7 @@ const Moderator = () => {
                     <button
                         type="submit"
                         className={`btn  btn-warning  ${loading ? 'disabled' : ''}`}
-                        disabled={loading || !selectedRow.id}
+                        disabled={loading || !selectedRow?.id}
                         style={{marginLeft: '10px'}}
                         data-toggle="modal" data-target="#changeModal">
                         Change
@@ -170,7 +177,7 @@ const Moderator = () => {
                         className={`btn  btn-danger  ${loading ? "disabled" : ""}`}
                         style={{marginLeft: '10px'}}
                         data-toggle="modal" data-target="#removeModal"
-                        disabled={loading || !selectedRow.id}>
+                        disabled={loading || !selectedRow?.id}>
                         Remove
                     </button>
 
@@ -191,7 +198,7 @@ const Moderator = () => {
 
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Current Brand Name</label>
-                                    <input value={selectedRow.makeName} disabled={true} type="text"
+                                    <input value={selectedRow?.name} disabled={true} type="text"
                                            className="form-control mb-0" id="exampleInputEmail1"/>
                                 </div>
 
@@ -271,7 +278,7 @@ const Moderator = () => {
                             </div>
                             <div className="modal-body">
                                 <p className='text-center' style={{fontSize: '21px'}}>Are you sure to remove moderator
-                                    "<b>{selectedRow.name} {selectedRow.surname}</b>"</p>
+                                    "<b>{selectedRow?.name} {selectedRow?.surname}</b>"</p>
                             </div>
                             <button type="button" onClick={handleRemoveItem} data-toggle="modal"
                                     data-target="#removeModal" className="btn btn-danger m-3">Remove

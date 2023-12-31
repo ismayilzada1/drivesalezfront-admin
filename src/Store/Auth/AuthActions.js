@@ -45,17 +45,26 @@ export const loginStaff = (credentials,rememberMe) => async (dispatch) => {
     }
 };
 
-export const logoutStaff = (token, e) => async (dispatch) => {
+export const logoutStaff = (accessToken) => async (dispatch) => {
     dispatch(logoutStart());
     try {
 
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
         if (!token) {
-            return null
+            return null;
         }
+
+
 
         const response = await AuthService.Logout(token);
 
+        console.log ("logout response");
+        console.log (response);
+
         if (response.status === 204) {
+            console.log ("logout success");
             dispatch(logoutSuccess())
             console.log('SUCCESSFUL Logout');
             return response;

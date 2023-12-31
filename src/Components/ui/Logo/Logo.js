@@ -5,7 +5,6 @@ const Logo = ({ size }) => {
         backgroundColor: 'transparent',
         filter: 'url(#colorFilter)',
         width: size,
-        height: 'auto',
     };
 
     return (

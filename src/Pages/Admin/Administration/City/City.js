@@ -12,7 +12,7 @@ const City = () => {
     const CommonDataService = new commonDataService ();
     const {loading, error} = useSelector ((state) => state.admin);
 
-    const {admin} = useSelector ((state) => state.auth);
+    const {AdminAccessToken} = useSelector ((state) => state.auth);
 
     const [listTableCountries, setListTableCountries] = useState ([]);
     const [listTableCities, setListTableCities] = useState ([]);
@@ -64,7 +64,7 @@ const City = () => {
 
     const handleRemoveItem = () => {
         if (selectedRowCountry.id && selectedRowCity.id) {
-            dispatch (RemoveCity(selectedRowCity.id,admin.token)).then (() => {
+            dispatch (RemoveCity(selectedRowCity.id,AdminAccessToken)).then (() => {
                 const countries = CommonDataService.getAllCountries().then (
                     (response) => {
                         setListTableCountries(response);
@@ -80,7 +80,7 @@ const City = () => {
                 "city": newCityName,
                 "countryId": selectedRowCountry.id
             }
-            dispatch(AddCity(requestBody,admin.token)).then (() => {
+            dispatch(AddCity(requestBody,AdminAccessToken)).then (() => {
                 setnewCityName('');
                 const countries = CommonDataService.getAllCountries().then (
                     (response) => {
@@ -98,7 +98,7 @@ const City = () => {
                 "cityId": selectedRowCity.id,
                 "newCity": newCityName
             }
-            dispatch(UpdateCity(requestBody,admin.token)).then (() => {
+            dispatch(UpdateCity(requestBody,AdminAccessToken)).then (() => {
                 setnewCityName('');
                 const dataBrands = CommonDataService.getAllCountries().then (
                     (response) => {
