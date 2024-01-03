@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginStaff} from '../../../Store/Auth/AuthActions';
 import Logo from "../../../Components/ui/Logo";
+import LogoFull from "../../../Components/ui/LogoFull";
 
 const SignIn = () => {
     const dispatch = useDispatch ();
@@ -60,9 +61,8 @@ const SignIn = () => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 col-xl-7 mx-auto">
-                                        <Logo size={"140px"}/>
+                                        <LogoFull width={"250px"}/>
                                     <form>
-                                        <h1 className={'text-center m-2'}>Admin Login</h1>
                                         <div className="form-group mb-3">
                                             <input id="inputEmail" value={Email}
                                                    onChange={(e) => setEmail (e.target.value)} type="email"

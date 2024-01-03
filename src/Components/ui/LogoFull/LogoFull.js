@@ -2,15 +2,14 @@ import React from 'react';
 
 const LogoFull = ({ width }) => {
     return (
-        <div>
+        <div className={'mb-3'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <img
                 src="../assets/images/logo-full.svg"
                 style={{
                     backgroundColor: "transparent",
-                    WebkitFilter: "brightness(0%)",
                     filter: "url(#colorFilter)",
-                    width: width || "100%", // Use the provided width or default to 100%
-                    height: "auto", // Maintain aspect ratio
+                    width: width || "100%",
+                    height: "auto",
                 }}
                 className="img-fluid"
                 alt=""
