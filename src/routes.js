@@ -21,6 +21,7 @@ import HomeModerator from "./Pages/Moderator/HomeModerator";
 import AnnouncementAuthority from "./Pages/Moderator/Moderation/AnnouncementAuthority";
 import EditProfile from "./Pages/Moderator/EditProfile";
 import ReviewAnnouncement from "./Pages/Moderator/ReviewAnnouncement";
+import NotFound from "./Pages/NotFound";
 
 const routes = [
     {
@@ -205,6 +206,10 @@ const routes = [
                 auth: true,
             },
         ],
+    },
+    {
+        path: '/*',
+        element: <NotFound />,
     },
 
 ];
