@@ -2939,7 +2939,7 @@ if(jQuery('#chartdiv').length){
                   "maps": [ "uzbekinstanLow", "uzbekinstanHigh" ]
                 },
                 "VA": {
-                  "country": "Holy See (Vatican City State)",
+                  "country": "Holy See (Vatican User State)",
                   "continent_code": "EU",
                   "continent": "Europe",
                   "maps": [ "vaticanLow", "vaticanHigh" ]

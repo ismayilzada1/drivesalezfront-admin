@@ -22,12 +22,9 @@ import AnnouncementAuthority from "./Pages/Moderator/Moderation/AnnouncementAuth
 import EditProfile from "./Pages/Moderator/EditProfile";
 import ReviewAnnouncement from "./Pages/Moderator/ReviewAnnouncement";
 import NotFound from "./Pages/NotFound";
+import User from "./Pages/Admin/Administration/User";
 
 const routes = [
-    {
-        path: '/',
-        element: <SignIn/>,
-    },
     {
         path: "/admin",
         element: <AdminLayout />,
@@ -35,6 +32,11 @@ const routes = [
             {
                 path: 'city',
                 element: <City />,
+                auth: true,
+            },
+            {
+                path: 'user',
+                element: <User />,
                 auth: true,
             },
             {
@@ -109,15 +111,16 @@ const routes = [
         element: <AdminLayout />,
         children: [
             {
-                path: 'dashboard-admin',
+                path: '/',
                 element: <HomeAdmin/>,
                 auth:true
             },
             {
-                path: 'dashboard-moderator',
-                element: <HomeModerator/>,
+                path: 'dashboard-admin',
+                element: <HomeAdmin/>,
                 auth:true
             },
+
         ],
     },
     {
@@ -191,6 +194,12 @@ const routes = [
         element: <AdminLayout />,
         children: [
             {
+                path: 'dashboard-moderator',
+                element: <HomeModerator/>,
+                auth:true
+            },
+
+            {
                 path: 'announcement-authority',
                 element: <AnnouncementAuthority />,
                 auth: true,
@@ -206,6 +215,10 @@ const routes = [
                 auth: true,
             },
         ],
+    },
+    {
+        path: '/',
+        element: <SignIn/>,
     },
     {
         path: '/*',

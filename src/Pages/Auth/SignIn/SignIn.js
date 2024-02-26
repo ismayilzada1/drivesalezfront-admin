@@ -36,9 +36,9 @@ const SignIn = () => {
         const response = await dispatch (loginStaff (credentials, rememberMe));
         console.log (response);
         if (response && response.status === 200 && response.data.userRole === 'Admin') {
-            navigate ('/dashboard-admin');
+            navigate ('/');
         } else if (response && response.status === 200 && response.data.userRole === 'Moderator') {
-            navigate ('/dashboard-moderator');
+            navigate ('/');
         } else {
             setShowAlert (true);
         }
@@ -81,10 +81,7 @@ const SignIn = () => {
                                                 <input type="checkbox" className="form-check-input" id="checkMe" checked={rememberMe} onChange={handleRememberMeChange} />
                                                 <label className="form-check-label" htmlFor="checkMe">Remember Me?</label>
                                             </div>
-
                                         </div>
-
-
 
 
                                         <button type="submit" onClick={handleSignIn} disabled={loading}

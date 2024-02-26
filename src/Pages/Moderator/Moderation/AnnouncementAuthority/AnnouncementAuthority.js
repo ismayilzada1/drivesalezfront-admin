@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './AnnouncementAuthority.css';
-import AnnouncementCard from '../../../../Components/ui/announcementCard';
+import AnnouncementCard from '../../../../Components/ui/AnnouncementCard';
 import { Row } from 'react-bootstrap';
 import LoadingPage from '../../../../Components/ui/Loading';
 import { useDispatch, useSelector } from 'react-redux';

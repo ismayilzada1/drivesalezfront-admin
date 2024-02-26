@@ -31,7 +31,7 @@ function App() {
       // {/*            <Route path='/admin-vehicle-make' element={<VehicleMake/>}/>*/}
       // {/*            <Route path='/admin-vehicle-model' element={<VehicleModel/>}/>*/}
       // {/*            <Route path='/admin-vehicle-bodytype' element={<VehicleBodyType/>}/>*/}
-      // {/*            <Route path='/admin-city' element={<City/>}/>*/}
+      // {/*            <Route path='/admin-city' element={<User/>}/>*/}
       // {/*            <Route path='/admin-country' element={<Country/>}/>*/}
       // {/*            <Route path='/admin-vehicle-color' element={<VehicleColor/>}/>*/}
       // {/*            <Route path='/admin-vehicle-condition' element={<VehicleCondition/>}/>*/}

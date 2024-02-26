@@ -14,6 +14,7 @@ const Topbar = () => {
 
     let BreadCrumbData=null
 
+
     if(admin.Role==="Admin"){
         BreadCrumbData=SidebarDataAdmin
     }
@@ -71,11 +72,16 @@ const Topbar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ml-auto navbar-list">
                                 <li className="nav-item">
-                                    <a className="search-toggle iq-waves-effect" href="#"><i className="ri-search-line"></i></a>
+                                    <a className="search-toggle iq-waves-effect" href="#">
+                                        <i className="ri-search-line">
+                                        </i>
+                                    </a>
                                     <form action="#" className="search-box">
                                         <input type="text" className="text search-input" placeholder="Type here to search..." />
                                     </form>
                                 </li>
+
+
                                 {/*<li className="nav-item dropdown">*/}
                                 {/*    <a href="#" className="search-toggle iq-waves-effect">*/}
                                 {/*        <i className="ri-mail-line"></i>*/}
@@ -266,7 +272,7 @@ const Topbar = () => {
                                             {/*    </div>*/}
                                             {/*</a>*/}
                                             <div className="d-inline-block w-100 text-center p-3">
-                                                <a className="iq-bg-danger iq-sign-btn"  onClick={(e)=>{handleLogout()}} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
+                                                <a className="iq-bg-danger iq-sign-btn"  style={{cursor:"pointer"}} onClick={(e)=>{handleLogout()}} role="button">Sign out<i className="ri-login-box-line ml-2"></i></a>
                                             </div>
                                         </div>
                                     </div>
