@@ -61,7 +61,9 @@ const SignIn = () => {
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-10 col-xl-7 mx-auto">
-                                        <LogoFull width={"250px"}/>
+                                    <div className={"m-4"}>
+                                        <Logo size={"200px"}/>
+                                    </div>
                                     <form>
                                         <div className="form-group mb-3">
                                             <input id="inputEmail" value={Email}

@@ -1,0 +1,22 @@
+.bg-admin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+    background-image: url('../../../../public/assets/images/admin-wallpaper.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.55;
+    background-position: center;
+
+}
+
+.border-left-primary{
+    border-left: .25rem solid #4e73df !important;
+}
+
+.custom-card{
+    border-radius: .35rem;
+}

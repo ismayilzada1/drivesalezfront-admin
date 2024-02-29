@@ -36,10 +36,10 @@ export const AddNewColor = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new color'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new color'));
     }
 };
 
@@ -60,10 +60,10 @@ export const AddNewBrand = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new brand'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new brand'));
     }
 };
 
@@ -84,10 +84,10 @@ export const AddNewModel = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your model request'));
+            dispatch(addNewFail('An error occurred while adding new model'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new model'));
     }
 };
 
@@ -109,10 +109,10 @@ export const AddNewOption = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new option'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new option'));
     }
 };
 
@@ -133,10 +133,10 @@ export const AddNewBodyType = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new body type'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new body type'));
     }
 };
 
@@ -157,10 +157,10 @@ export const AddNewFuelType = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new fuel type'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new fuel type'));
     }
 };
 
@@ -182,10 +182,10 @@ export const AddNewDrivetrainType = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new drivetrain type'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new drivetrain type'));
     }
 };
 
@@ -206,10 +206,10 @@ export const AddNewGearboxType = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new gearbox'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new gearbox'));
     }
 };
 
@@ -230,35 +230,10 @@ export const AddNewMarketVersion = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new market version'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
-    }
-};
-
-export const AddVehicleOption = (data,accessToken) => async (dispatch) => {
-    dispatch(addNewStart());
-    try {
-
-        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
-
-        if (!token) {
-            return null;
-        }
-
-
-        const response = await AdminService.AddNewVehicleOption(data,token);
-
-        if (response.status===200) {
-            console.log("SUCCESFULL ADD NEW Market Version");
-            dispatch(addNewSuccess(response.data));
-            return response;
-        } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
-        }
-    } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new market version'));
     }
 };
 
@@ -279,10 +254,10 @@ export const AddVehicleCondition = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new vehicle condition'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new vehicle condition'));
     }
 };
 
@@ -329,10 +304,10 @@ export const AddCountry = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new country'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new country'));
     }
 };
 
@@ -353,10 +328,10 @@ export const AddCity = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while adding new city'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while adding new city'));
     }
 };
 
@@ -377,10 +352,10 @@ export const RemoveBrand = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing brand'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing brand'));
     }
 };
 
@@ -402,10 +377,10 @@ export const RemoveCity = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing city'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing city'));
     }
 };
 
@@ -427,10 +402,10 @@ export const RemoveCountry = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while removing country'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while removing country'));
     }
 };
 
@@ -451,10 +426,10 @@ export const RemoveModel = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while removing model'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while removing model'));
     }
 };
 
@@ -475,10 +450,10 @@ export const RemoveColor = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing color'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing color'));
     }
 };
 
@@ -499,10 +474,10 @@ export const RemoveVehicleCondition = (data,accessToken) => async (dispatch) => 
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing vehicle condition'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing vehicle condition'));
     }
 };
 
@@ -523,10 +498,10 @@ export const RemoveOption = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing vehicle option'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing vehicle option'));
     }
 };
 
@@ -547,10 +522,10 @@ export const RemoveMarketVersion = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing market version'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('n error occurred while removing market version'));
     }
 };
 
@@ -571,10 +546,10 @@ export const RemoveFuelType = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing fuel type'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing fuel type'));
     }
 };
 
@@ -595,10 +570,10 @@ export const RemoveBodyType = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while removing body type'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while removing body type'));
     }
 };
 
@@ -619,10 +594,10 @@ export const RemoveGearboxType = (data,accessToken) => async (dispatch) => {
             dispatch(addNewSuccess(response.data));
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            dispatch(addNewFail('An error occurred while removing gearbox type'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        dispatch(addNewFail('An error occurred while removing gearbox type'));
     }
 };
 
@@ -643,10 +618,10 @@ export const UpdateBodyType = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating body type'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating body type'));
     }
 };
 
@@ -667,10 +642,10 @@ export const UpdateGearboxType = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating gearbox type'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating gearbox type'));
     }
 };
 
@@ -692,10 +667,10 @@ export const UpdateBrand = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating brand'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating brand'));
     }
 };
 
@@ -716,10 +691,10 @@ export const UpdateVehicleCondition = (data,accessToken) => async (dispatch) => 
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating vehicle condition'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating vehicle condition'));
     }
 };
 
@@ -740,10 +715,10 @@ export const UpdateModel = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating model'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating model'));
     }
 };
 
@@ -764,10 +739,10 @@ export const UpdateCity = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating city'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating city'));
     }
 };
 
@@ -788,10 +763,10 @@ export const UpdateColor = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating color'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating color'));
     }
 };
 
@@ -811,10 +786,10 @@ export const UpdateAnnouncementPricing = (data,accessToken) => async (dispatch) 
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating announcement pricing'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating announcement pricing'));
     }
 };
 
@@ -836,10 +811,10 @@ export const UpdateCountry = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating country'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating country'));
     }
 };
 
@@ -860,10 +835,10 @@ export const UpdateOption = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating vehicle option'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating vehicle option'));
     }
 };
 
@@ -884,10 +859,10 @@ export const UpdateMarketVersion = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating market version'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating market version'));
     }
 };
 
@@ -908,10 +883,10 @@ export const UpdateFuelType = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating fuel type'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating fuel type'));
     }
 };
 
@@ -933,10 +908,10 @@ export const UpdateDrivetrainType = (data,accessToken) => async (dispatch) => {
             dispatch(updateSuccess(response.data));
             return response;
         } else {
-            dispatch(updateFail('An error occurred while processing your request'));
+            dispatch(updateFail('An error occurred while updating drivetrain type'));
         }
     } catch (error) {
-        dispatch(updateFail('An error occurred while processing your request'));
+        dispatch(updateFail('An error occurred while updating drivetrain type'));
     }
 };
 
@@ -957,10 +932,10 @@ export const RemoveDrivetrainType = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing drivetrain type'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing drivetrain type'));
     }
 };
 
@@ -968,25 +943,25 @@ export const RemoveDrivetrainType = (data,accessToken) => async (dispatch) => {
 export const AddNewModerator = (data,accessToken) => async (dispatch) => {
     dispatch(addNewStart());
     try {
-
         let token = accessToken || sessionStorage.getItem("AdminAuthToken");
-
 
         if (!token) {
             return null;
         }
 
         const response = await AdminService.AddNewModerator(data,token);
-
+        console.log(response);
         if (response.status===200) {
-            console.log("SUCCESFULL ADD NEW Brand");
             dispatch(addNewSuccess(response.data));
+            console.log("SUCCESFULL ADD NEW Moderator");
             return response;
         } else {
-            dispatch(addNewFail('An error occurred while processing your request'));
+            console.log("else");
+            dispatch(addNewFail('An error occurred while adding new moderator'));
         }
     } catch (error) {
-        dispatch(addNewFail('An error occurred while processing your request'));
+        console.log("catch");
+        dispatch(addNewFail('An error occurred while adding new moderator'));
     }
 };
 
@@ -1007,10 +982,10 @@ export const RemoveModerator = (data,accessToken) => async (dispatch) => {
             dispatch(removeSuccess(response.data));
             return response;
         } else {
-            dispatch(removeFail('An error occurred while processing your request'));
+            dispatch(removeFail('An error occurred while removing moderator'));
         }
     } catch (error) {
-        dispatch(removeFail('An error occurred while processing your request'));
+        dispatch(removeFail('An error occurred while removing moderator'));
     }
 };
 

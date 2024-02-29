@@ -1,10 +1,12 @@
 import React from 'react';
 
+
 const LogoFull = ({ width }) => {
     return (
+
         <div className={'mb-3'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <img
-                src="../assets/images/logo-full.svg"
+                src="/assets/images/logo-full.svg"
                 style={{
                     backgroundColor: "transparent",
                     filter: "url(#colorFilter)",
@@ -12,10 +14,10 @@ const LogoFull = ({ width }) => {
                     height: "auto",
                 }}
                 className="img-fluid"
-                alt=""
+                alt="logo"
             />
 
-            <svg style={{ display: "none" }}>
+            <svg>
                 <defs>
                     <filter id="colorFilter" colorInterpolationFilters="sRGB">
                         <feColorMatrix
@@ -30,6 +32,9 @@ const LogoFull = ({ width }) => {
                 </defs>
             </svg>
         </div>
+
+
+
     );
 };
 
