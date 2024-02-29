@@ -1,6 +1,7 @@
 export default class AnnouncementService {
-    _baseUrl = 'https://drivesalez.azurewebsites.net/api';
+    // _baseUrl = 'https://drivesalez.azurewebsites.net/api';
     // _baseUrl = 'https://localhost:7261/api';
+    _baseUrl = 'https://217.64.21.237:7261/api';
 
     async getResource(url) {
         try {

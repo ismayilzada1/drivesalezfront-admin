@@ -14,6 +14,7 @@ const AdminSlice = createSlice({
         },
         addNewSuccess: (state, action) => {
             state.loading = false;
+            state.error=null;
         },
         addNewFail: (state, action) => {
             state.loading = false;
@@ -26,7 +27,8 @@ const AdminSlice = createSlice({
         },
         removeSuccess: (state, action) => {
             state.loading = false;
-        },
+            state.error=null;
+            },
         removeFail: (state, action) => {
             state.loading = false;
             state.error = action.payload;
@@ -38,6 +40,7 @@ const AdminSlice = createSlice({
         },
         updateSuccess: (state, action) => {
             state.loading = false;
+            state.error=null;
         },
         updateFail: (state, action) => {
             state.loading = false;

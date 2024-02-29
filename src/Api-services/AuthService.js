@@ -1,7 +1,8 @@
 export default class AuthService {
     constructor() {
-        this.baseUrl = 'https://drivesalez.azurewebsites.net/api';
+        // this.baseUrl = 'https://drivesalez.azurewebsites.net/api';
         // this.baseUrl = 'https://localhost:7261/api';
+        this.baseUrl = 'https://217.64.21.237:7261/api';
     }
 
 

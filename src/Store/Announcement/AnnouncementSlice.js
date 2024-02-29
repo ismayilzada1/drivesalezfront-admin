@@ -59,6 +59,7 @@ const announcementSlice = createSlice({
 
         getAnnouncementsStart(state) {
             state.loading = true;
+            state.error=null;
         },
         getAnnouncementsSuccess(state, action) {
             const newAnnouncements = action.payload;
@@ -86,18 +87,22 @@ const announcementSlice = createSlice({
 
         setAnnouncements(state,action){
             state.announcements=action.payload;
+            state.error=null;
         },
 
         // Pagination
         setPageNumber: (state, action) => {
             state.pageNumber = action.payload;
+            state.error=null;
         },
         setPageSize: (state, action) => {
             state.pageSize = action.payload;
+            state.error=null;
         },
 
         setAnnouncementStart(state){
             state.loading=true;
+            state.error=null;
         },
 
         setAnnouncementSuccess:(state,action)=>{
@@ -118,6 +123,7 @@ const announcementSlice = createSlice({
         },
         rejectConfirmSuccess: (state, action) => {
             state.loading = false;
+            state.error=null;
         },
         rejectConfirmFail: (state, action) => {
             state.loading = false;
