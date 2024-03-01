@@ -6,6 +6,7 @@ const AdminSlice = createSlice({
     initialState: {
         loading: false,
         error: null,
+        users:null
     },
     reducers: {
         addNewStart: (state) => {
@@ -46,7 +47,43 @@ const AdminSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-
+        getAllUsersStart: (state,action)=>{
+            state.loading = true;
+            state.error = null;
+        },
+        getAllUsersSucess: (state,action)=>{
+            state.loading = false;
+            state.error=null;
+            state.users=action.payload;
+        },
+        getAllUsersFail: (state,action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        },
+        banUserStart: (state,action)=>{
+            state.loading = true;
+            state.error = null;
+        },
+        banUserSucess: (state,action)=>{
+            state.loading = false;
+            state.error=null;
+        },
+        banUserFail: (state,action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        },
+        unbanUserStart: (state,action)=>{
+            state.loading = true;
+            state.error = null;
+        },
+        unbanUserSucess: (state,action)=>{
+            state.loading = false;
+            state.error=null;
+        },
+        unbanUserFail: (state,action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        },
 
 
     },
@@ -62,6 +99,15 @@ export const {
     updateFail,
     updateStart,
     updateSuccess,
+    getAllUsersStart,
+    getAllUsersSucess,
+    getAllUsersFail,
+        banUserStart,
+        banUserSucess,
+        banUserFail,
+    unbanUserStart,
+    unbanUserSucess,
+    unbanUserFail
 
 
 } = AdminSlice.actions;

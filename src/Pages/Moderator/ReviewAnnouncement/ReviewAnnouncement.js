@@ -586,7 +586,7 @@ const ReviewAnnouncement = () => {
 
                                 </div>
                                 <button type="button" data-toggle="modal"
-                                        data-target="#addModal" data-dismiss="modal" onClick={handleConfirmAnnouncement} className="btn btn-success m-3">Confirm
+                                        data-target="#ConfirmModal" data-dismiss="modal" onClick={handleConfirmAnnouncement} className="btn btn-success m-3">Confirm
                                 </button>
 
                             </div>
@@ -646,7 +646,7 @@ const ReviewAnnouncement = () => {
 
                                 </div>
                                 <button type="button" data-toggle="modal"
-                                        data-target="#addModal" onClick={handleRejectAnnouncement} className="btn btn-danger m-3">Reject
+                                        data-target="#RejectModal" onClick={handleRejectAnnouncement} className="btn btn-danger m-3">Reject
                                 </button>
 
                             </div>

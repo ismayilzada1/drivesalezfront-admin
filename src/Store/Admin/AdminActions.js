@@ -9,12 +9,23 @@ import {
     removeSuccess,
     removeFail,
     rejectConfirmStart,
-    rejectConfirmSuccess, rejectConfirmFail
+    rejectConfirmSuccess,
+    rejectConfirmFail,
+    getAllUsersStart,
+    getAllUsersSucess,
+    getAllUsersFail,
+    banUserStart,
+    banUserSucess, banUserFail, unbanUserStart, unbanUserSucess, unbanUserFail
 } from './AdminSlice';
 
 
 import adminService from '../../Api-services/AdminService';
 import {useSelector} from "react-redux";
+import {
+    getAnnouncementsFailure,
+    getAnnouncementsStart,
+    getAnnouncementsSuccess
+} from "../Announcement/AnnouncementSlice";
 
 
 const AdminService = new adminService();
@@ -989,5 +1000,97 @@ export const RemoveModerator = (data,accessToken) => async (dispatch) => {
     }
 };
 
+export const GetAllUsers = (accessToken) => async (dispatch) => {
+    dispatch(getAllUsersStart());
+    try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+        const response = await AdminService.GetAllUsers(token);
+        if (response.status===200) {
+            console.log("SUCCESFULL FETCH GET USERS");
+            const data=await response.json();
+            dispatch(getAllUsersSucess(data.reverse()));
+        } else {
+            dispatch(getAllUsersFail('An error occurred while get all users'));
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch(getAllUsersFail('An error occurred while get all users'));
+    }
+};
+
+export const BanUser = (userId,accessToken) => async (dispatch) => {
+    dispatch(banUserStart());
+    try {
+
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+        const response = await AdminService.BanUser(userId,token);
+        if (response.status===200) {
+            dispatch(banUserSucess());
+        } else {
+            dispatch(banUserFail('An error occurred while banning user'));
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch(banUserFail('An error occurred while  banning user'));
+    }
+};
+
+export const UnBanUser = (userId,accessToken) => async (dispatch) => {
+    dispatch(unbanUserStart());
+    try {
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+        const response = await AdminService.UnBanUser(userId,token);
+        console.log(response);
+        if (response.status===200) {
+            dispatch(unbanUserSucess());
+        } else {
+            dispatch(unbanUserFail('An error occurred while banning user'));
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch(unbanUserFail('An error occurred while  banning user'));
+    }
+};
+
+export const SendMailToUser = (userId,accessToken) => async (dispatch) => {
+    dispatch(banUserStart());
+    try {
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+        const response = await AdminService.UnBanUser(userId,token);
+        if (response.status===200) {
+            console.log("SUCCESFULL FETCH GET USERS");
+            const data=await response.json();
+
+            dispatch(banUserSucess());
+
+        } else {
+            dispatch(banUserFail('An error occurred while banning user'));
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch(banUserFail('An error occurred while  banning user'));
+    }
+};
 
 

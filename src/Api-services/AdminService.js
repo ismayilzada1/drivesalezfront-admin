@@ -1034,9 +1034,7 @@ export default class AdminService {
 
 
     async GetAllModerators(accessToken) {
-
         let token = accessToken || sessionStorage.getItem("AdminAuthToken");
-
 
         if (!token) {
             return null;
@@ -1044,6 +1042,51 @@ export default class AdminService {
 
         return await this.getResourceAuthorize(`/Admin/get-all-moderators`,token);
     }
+
+    async GetAllUsers(accessToken) {
+        let token = accessToken || sessionStorage.getItem("AdminAuthToken");
+
+        if (!token) {
+            return null;
+        }
+
+        return await this.getResourceAuthorize(`/Admin/get-all-users`,token);
+    }
+
+    async BanUser(data,token) {
+        try {
+            const response = await fetch(`${this.baseUrl}/Admin/ban-user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body: JSON.stringify(data),
+            });
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async UnBanUser(data,token) {
+        try {
+            const response = await fetch(`${this.baseUrl}/Admin/unban-user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body: JSON.stringify(data),
+            });
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 
 
     async AddNewModerator(data,token) {

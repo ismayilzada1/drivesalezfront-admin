@@ -211,7 +211,7 @@ a:hover { text-decoration: none; }
 /*---------------------------------------------------------------------
                                 Sidebar
 -----------------------------------------------------------------------*/
-.iq-sidebar { position: fixed; z-index: 999; top: 0; width: 260px; overflow: hidden; height: 100%; background: #ffffff; transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out; -webkit-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1); -moz-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1); box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1); }
+.iq-sidebar { position: fixed; z-index: 999; top: 0; width: 260px; overflow: hidden; height: 100%; background: #fff; transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out; -webkit-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1); -moz-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1); box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1); }
 .iq-sidebar .iq-sidebar-logo { float: none; width: 100%; }
 .iq-sidebar #sidebar-scrollbar { margin-top: 15px; }
 
