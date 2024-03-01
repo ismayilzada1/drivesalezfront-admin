@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import adminservice from "../../../../Api-services/AdminService";
+import { Editor } from 'primereact/editor';
 import {
     AddCity,
     AddNewColor, BanUser,
     RemoveCity,
-    RemoveColor, UnBanUser,
+    RemoveColor, SendMailToUser, UnBanUser,
     UpdateCity,
     UpdateColor
 } from "../../../../Store/Admin/AdminActions";
 import Loading from "../../../../Components/ui/Loading";
+import "./User.css"
 
 
 const User = () => {
@@ -83,15 +85,20 @@ const User = () => {
     };
 
     const sendMessageUser = () => {
-        // console.log (title);
-        // if(title) {
-        //     dispatch(AddNewColor(title,AdminAccessToken)).then (() => {
-        //         setTitle('');
-        //         const data = CommonDataService.getAllCarColors().then((response)=>{
-        //             setListTable(response);
-        //         });
-        //     });
-        // }
+        if(title && emailDescription && selectedRow.email) {
+
+            const requestBody={
+                "toEmail": selectedRow.email,
+                "subject": title,
+                "body": emailDescription
+            }
+
+            dispatch(SendMailToUser(requestBody,AdminAccessToken)).then (() => {
+                setTitle('');
+                setEmailDescription('');
+                console.log("getdi");
+            });
+        }
     };
 
 
@@ -227,7 +234,7 @@ const User = () => {
 
                 <div className="modal fade" id="sendMessageModal" tabIndex="-1" role="dialog"
                      aria-labelledby="sendMessageModal" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
+                    <div className="modal-dialog modal-lg" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Send Message to
@@ -248,8 +255,7 @@ const User = () => {
 
                                 <div className="form-group m-0">
                                     <label htmlFor="exampleInputEmail1">Description</label>
-
-
+                                    <Editor value={emailDescription} onTextChange={(e) => setEmailDescription(e.htmlValue)} style={{ height: '320px' }} />
                                 </div>
 
                             </div>

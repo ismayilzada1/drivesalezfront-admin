@@ -15,7 +15,13 @@ import {
     getAllUsersSucess,
     getAllUsersFail,
     banUserStart,
-    banUserSucess, banUserFail, unbanUserStart, unbanUserSucess, unbanUserFail
+    banUserSucess,
+    banUserFail,
+    unbanUserStart,
+    unbanUserSucess,
+    unbanUserFail,
+    sendMailToUserStart,
+    sendMailToUserSuccess, sendMailToUserFail
 } from './AdminSlice';
 
 
@@ -1068,8 +1074,8 @@ export const UnBanUser = (userId,accessToken) => async (dispatch) => {
     }
 };
 
-export const SendMailToUser = (userId,accessToken) => async (dispatch) => {
-    dispatch(banUserStart());
+export const SendMailToUser = (data,accessToken) => async (dispatch) => {
+    dispatch(sendMailToUserStart());
     try {
         let token = accessToken || sessionStorage.getItem("AdminAuthToken");
 
@@ -1077,19 +1083,18 @@ export const SendMailToUser = (userId,accessToken) => async (dispatch) => {
             return null;
         }
 
-        const response = await AdminService.UnBanUser(userId,token);
+        const response = await AdminService.SendMailToUser(data,token);
         if (response.status===200) {
-            console.log("SUCCESFULL FETCH GET USERS");
-            const data=await response.json();
+            console.log("SUCCESFULL SEND MAIL");
+            // const data=await response.json();
 
-            dispatch(banUserSucess());
+            dispatch(sendMailToUserSuccess());
 
         } else {
-            dispatch(banUserFail('An error occurred while banning user'));
+            dispatch(sendMailToUserFail('An error occurred while sending mail'));
         }
     } catch (error) {
-        console.log(error);
-        dispatch(banUserFail('An error occurred while  banning user'));
+        dispatch(sendMailToUserFail('An error occurred while sending mail'));
     }
 };
 

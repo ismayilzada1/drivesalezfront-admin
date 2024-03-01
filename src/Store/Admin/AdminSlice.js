@@ -84,7 +84,18 @@ const AdminSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-
+        sendMailToUserStart: (state,action)=>{
+            state.loading = true;
+            state.error = null;
+        },
+        sendMailToUserSuccess: (state,action)=>{
+            state.loading = false;
+            state.error=null;
+        },
+        sendMailToUserFail: (state,action)=>{
+            state.loading = false;
+            state.error = action.payload;
+        },
 
     },
 });
@@ -107,7 +118,10 @@ export const {
         banUserFail,
     unbanUserStart,
     unbanUserSucess,
-    unbanUserFail
+    unbanUserFail,
+    sendMailToUserStart,
+    sendMailToUserSuccess,
+    sendMailToUserFail,
 
 
 } = AdminSlice.actions;

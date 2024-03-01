@@ -1087,6 +1087,22 @@ export default class AdminService {
         }
     }
 
+    async SendMailToUser(data,token) {
+        try {
+            const response = await fetch(`${this.baseUrl}/Admin/send-mail-to-user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':`Bearer ${token}`
+                },
+                body: JSON.stringify(data),
+            });
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 
 
     async AddNewModerator(data,token) {
